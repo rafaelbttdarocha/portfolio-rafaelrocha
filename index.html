@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rafael Rocha - UX/UI Designer Pleno</title>
+<meta name="description" content="Rafael Rocha, UX/UI Designer Pleno em São Paulo. Produtos de fintech desde 2021: pesquisa com usuário real, design system e entrega no ritmo do time.">
+<meta name="author" content="Rafael Rocha">
+<meta name="theme-color" content="#0B0B0C" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FBFAF9" media="(prefers-color-scheme: light)">
+<link rel="canonical" href="https://rafaelrocha.design/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rafael Rocha - UX/UI Designer Pleno">
+<meta property="og:description" content="Deixo simples o que é complicado de usar. Produtos de fintech desde 2021.">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Rafael Rocha",
+  "jobTitle": "UX/UI Designer Pleno",
+  "email": "mailto:rafael.dg.bottaro@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "São Paulo", "addressRegion": "SP", "addressCountry": "BR" },
+  "sameAs": [
+    "https://www.linkedin.com/in/rafaelbttrocha/",
+    "https://www.behance.net/rafaelbttrocha"
+  ],
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Centro Universitário Senac" },
+  "worksFor": { "@type": "Organization", "name": "Ewally" }
+}
+</script>
+
+<script>
+/* Pre-hide the hero/nav before first paint so the entrance reveals from
+   nothing instead of flashing the final text. Failsafe reveals it if the
+   main script never runs. Reduced motion is handled by the CSS gate. */
+(function () {
+  try {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.documentElement.classList.add('anim-ready');
+    setTimeout(function () { document.documentElement.classList.remove('anim-ready'); }, 2600);
+  } catch (e) {}
+})();
+</script>
+
+<style>
+/* =========================================================
+   TOKENS
+   Corner radius system: cards 16px, media 12px, inputs 10px,
+   interactive chips and buttons are full pill. Applied everywhere.
+   Accent: one coral hue, light and dark variants of the same color.
+   ========================================================= */
+:root{
+  --bg:#0B0B0C;
+  --bg-elevated:#111113;
+  --surface:#161618;
+  --surface-2:#1D1D20;
+  --line:rgba(255,255,255,.10);
+  --line-strong:rgba(255,255,255,.18);
+  --text:#F3F2F0;
+  --text-2:#A5A5AB;
+  --text-3:#87878F;
+  /* Brand: lime #89e900 primary + mint #00e9af secondary.
+     The lime is bright, so on near-black it reads well as both a fill (with
+     dark ink) and as on-surface text; on cream it would vanish, so the light
+     theme swaps to a deep green (see below). */
+  --brand:#89E900;
+  --accent:#89E900;
+  --accent-soft:#A6F23A;
+  --accent-ink:#0B0B0C;
+  --accent-wash:rgba(137,233,0,.16);
+  --accent-2:#00E9AF;
+  --accent-2-wash:rgba(0,233,175,.14);
+  --shadow:0 24px 60px -28px rgba(0,0,0,.8);
+
+  --r-card:16px;
+  --r-media:12px;
+  --r-input:10px;
+  --r-pill:999px;
+
+  --font:"Geist","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+
+  --page:1180px;
+  --gutter:clamp(1.25rem,5vw,3rem);
+  --section-y:clamp(5rem,11vw,9rem);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+:root[data-theme="light"]{
+  --bg:#FBFAF9;
+  --bg-elevated:#FFFFFF;
+  --surface:#FFFFFF;
+  --surface-2:#F4F2EF;
+  --line:rgba(20,18,16,.11);
+  --line-strong:rgba(20,18,16,.20);
+  --text:#16161A;
+  --text-2:#55555C;
+  --text-3:#6E6E76;
+  /* Bright lime is unreadable on cream, so the on-surface accent becomes a
+     deep green (fill with white ink, and text); hover deepens further.
+     The lime lives on as the wash tint and in the hero field. */
+  --brand:#89E900;
+  --accent:#3F6B00;
+  --accent-soft:#2F5000;
+  --accent-ink:#FFFFFF;
+  --accent-wash:rgba(137,233,0,.16);
+  --accent-2:#0E9E78;
+  --accent-2-wash:rgba(14,158,120,.12);
+  --shadow:0 24px 50px -30px rgba(24,18,14,.35);
+}
+
+/* ---------- reset ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body,h1,h2,h3,h4,p,figure,ul,ol,dl,dd,blockquote{margin:0}
+ul,ol{padding:0;list-style:none}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  font-size:clamp(.975rem,.94rem + .18vw,1.0625rem);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ---------- shared layout ---------- */
+.wrap{width:100%;max-width:var(--page);margin-inline:auto;padding-inline:var(--gutter)}
+.section{padding-block:var(--section-y);scroll-margin-top:88px;position:relative}
+.section+.section{border-top:1px solid var(--line)}
+
+.eyebrow{
+  font-family:var(--mono);font-size:.72rem;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+}
+h2.title{
+  font-size:clamp(1.9rem,1.35rem + 2.4vw,3.1rem);
+  line-height:1.08;letter-spacing:-.035em;font-weight:600;
+  max-width:20ch;
+}
+.lede{color:var(--text-2);max-width:58ch;margin-top:1.1rem}
+.section-head{margin-bottom:clamp(2.5rem,5vw,4rem)}
+.section-head .eyebrow+h2.title{margin-top:.85rem}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;white-space:nowrap;
+  padding:.78rem 1.4rem;border-radius:var(--r-pill);
+  font-size:.9375rem;font-weight:500;letter-spacing:-.01em;
+  border:1px solid transparent;
+  transition:transform .18s var(--ease),background-color .18s var(--ease),border-color .18s var(--ease),color .18s var(--ease);
+}
+.btn i{font-size:1.05em}
+.btn--primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn--primary:hover{background:var(--accent-soft);border-color:var(--accent-soft)}
+.btn--ghost{border-color:var(--line-strong);color:var(--text);background:var(--bg-elevated)}
+.btn--ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn:active{transform:translateY(1px) scale(.985)}
+
+.icon-btn{
+  width:42px;height:42px;display:inline-grid;place-items:center;
+  border-radius:var(--r-pill);border:1px solid var(--line);
+  color:var(--text-2);background:var(--bg-elevated);font-size:1.15rem;
+  transition:color .18s var(--ease),border-color .18s var(--ease),transform .18s var(--ease);
+}
+.icon-btn:hover{color:var(--accent);border-color:var(--accent)}
+.icon-btn:active{transform:scale(.94)}
+
+:where(a,button,summary,[tabindex]):focus-visible{
+  outline:2px solid var(--accent);outline-offset:3px;border-radius:6px;
+}
+
+.skip{
+  position:absolute;left:.75rem;top:.75rem;z-index:200;
+  transform:translateY(-160%);
+  background:var(--accent);color:var(--accent-ink);
+  padding:.6rem 1rem;border-radius:var(--r-pill);font-size:.875rem;font-weight:500;
+  transition:transform .2s var(--ease);
+}
+.skip:focus{transform:translateY(0)}
+
+/* =========================================================
+   NAV  (single line at desktop, 64px tall)
+   ========================================================= */
+.nav{
+  position:sticky;top:0;z-index:100;
+  height:64px;display:flex;align-items:center;
+  background:color-mix(in srgb,var(--bg) 78%,transparent);
+  backdrop-filter:saturate(160%) blur(14px);
+  -webkit-backdrop-filter:saturate(160%) blur(14px);
+  border-bottom:1px solid transparent;
+  transition:border-color .25s var(--ease);
+}
+.nav.is-stuck{border-bottom-color:var(--line)}
+@media (prefers-reduced-transparency:reduce){
+  .nav{background:var(--bg);backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;width:100%}
+.brand{display:inline-flex;align-items:center}
+.brand__logo{display:inline-flex}
+.brand__logo svg{width:30px;height:30px;display:none}
+/* Show the logo made for the active theme; exactly one is ever visible. */
+:root[data-theme="dark"] .brand__logo--dark{display:block}
+:root[data-theme="light"] .brand__logo--light{display:block}
+.nav__links{display:flex;align-items:center;gap:.35rem}
+.nav__links a{
+  padding:.45rem .7rem;border-radius:var(--r-pill);
+  font-size:.9rem;color:var(--text-2);
+  transition:color .18s var(--ease),background-color .18s var(--ease);
+}
+.nav__links a:hover,.nav__links a[aria-current="true"]{color:var(--text);background:var(--surface)}
+.nav__tools{display:flex;align-items:center;gap:.5rem}
+.nav__tools .icon-btn{width:38px;height:38px;font-size:1.05rem}
+.nav__toggle{display:none}
+
+@media (max-width:900px){
+  .nav__links{
+    position:absolute;top:64px;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:.15rem;
+    padding:.75rem var(--gutter) 1.25rem;
+    background:var(--bg-elevated);border-bottom:1px solid var(--line);
+    box-shadow:var(--shadow);
+  }
+  .nav__links[hidden]{display:none}
+  .nav__links a{padding:.7rem .5rem;font-size:1rem}
+  .nav__toggle{display:inline-grid}
+}
+
+/* =========================================================
+   HERO  (editorial statement over an interactive particle field)
+   ========================================================= */
+.hero{
+  position:relative;isolation:isolate;
+  padding-top:clamp(3.5rem,8vw,7rem);padding-bottom:var(--section-y);
+}
+/* Canvas sits behind the copy and never intercepts clicks on the CTAs. */
+.hero__canvas{
+  position:absolute;inset:0;z-index:-1;
+  display:block;width:100%;height:100%;
+  pointer-events:none;
+}
+.hero__grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr)}
+/* Measure is set per element, not on the wrapper, so the name never wraps. */
+
+.hero h1{
+  font-size:clamp(2.8rem,.6rem + 10.5vw,9rem);
+  line-height:.92;letter-spacing:-.055em;font-weight:600;
+}
+.hero__role{
+  margin-top:1.1rem;
+  font-size:clamp(1.1rem,1rem + .5vw,1.4rem);
+  line-height:1.35;letter-spacing:-.02em;color:var(--text);font-weight:400;
+  max-width:42ch;
+}
+.hero__role b{color:var(--accent);font-weight:500}
+.hero__sub{margin-top:1.25rem;color:var(--text-2);max-width:46ch}
+.hero__actions{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;margin-top:2.5rem}
+.hero__actions .sep{width:1px;height:26px;background:var(--line);margin-inline:.25rem}
+
+@media (max-width:860px){
+  .hero__actions .sep{display:none}
+}
+
+/* =========================================================
+   ENTRANCE (staggered word/item reveal, blur + rise on load)
+   Ported from the motion-primitives TextEffect to vanilla CSS/JS.
+   Sequence: nav items, then hero name, role, and paragraph in turn.
+   Everything below is gated on no-preference; reduced motion sees it
+   fully static, and the .anim-ready pre-hide only applies while JS drives.
+   ========================================================= */
+@media (prefers-reduced-motion:no-preference){
+  /* Pre-hide the animated blocks before the script splits them (no flash). */
+  .anim-ready .hero__copy > *{opacity:0}
+  .anim-ready .brand,
+  .anim-ready .nav__tools{opacity:0}
+  @media (min-width:901px){ .anim-ready .nav__links a{opacity:0} }
+
+  .tw{
+    display:inline-block;
+    opacity:0;filter:blur(12px);transform:translateY(.4em);
+    transition:opacity .6s var(--ease),filter .6s var(--ease),transform .6s var(--ease);
+    transition-delay:var(--d,0ms);
+    will-change:opacity,filter,transform;
+  }
+  .tw--in{opacity:1;filter:blur(0);transform:none}
+  .tw--done{will-change:auto}
+}
+
+/* =========================================================
+   SOBRE  (portrait beside the bio, metrics band under the prose)
+   ========================================================= */
+.about__grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+
+.about__photo{
+  position:relative;aspect-ratio:4/5;border-radius:var(--r-card);overflow:hidden;
+  background:var(--surface-2);border:1px solid var(--line);
+}
+.about__photo img{width:100%;height:100%;object-fit:cover}
+.about__photo.no-img img{display:none}
+.about__photo.no-img::after{
+  content:attr(data-fallback);
+  position:absolute;inset:0;display:grid;place-items:center;
+  font-family:var(--mono);font-size:clamp(3rem,8vw,5rem);font-weight:500;
+  letter-spacing:-.04em;color:var(--accent);
+  background:
+    radial-gradient(120% 90% at 20% 0%,var(--accent-wash),transparent 62%),
+    linear-gradient(160deg,var(--surface-2),var(--surface));
+}
+
+.about__prose p+p{margin-top:1.15rem}
+.about__prose p{color:var(--text-2);max-width:60ch}
+.about__prose p:first-child{color:var(--text);font-size:clamp(1.05rem,1rem + .45vw,1.3rem);line-height:1.45;letter-spacing:-.018em}
+
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0 clamp(1.5rem,3vw,2.5rem);
+  margin-top:clamp(2rem,4vw,2.75rem);border-top:1px solid var(--line);
+}
+.stats>div{padding:1.25rem 0;border-bottom:1px solid var(--line)}
+.stats dt{font-family:var(--mono);font-size:1.75rem;font-weight:500;letter-spacing:-.04em;color:var(--accent);line-height:1}
+.stats dd{margin-top:.4rem;font-size:.875rem;color:var(--text-2);max-width:30ch}
+
+@media (max-width:860px){
+  .about__grid{grid-template-columns:1fr;gap:2.5rem}
+  .about__aside{max-width:300px}
+}
+@media (max-width:640px){.stats{grid-template-columns:1fr}}
+
+/* =========================================================
+   EXPERIÊNCIA  (vertical timeline, reveals on scroll)
+   ========================================================= */
+.timeline{position:relative;padding-left:clamp(1.75rem,4vw,2.75rem)}
+.timeline::before{
+  content:"";position:absolute;left:0;top:.55rem;bottom:2.5rem;width:2px;
+  background:var(--line);border-radius:2px;
+}
+.timeline__fill{
+  position:absolute;left:0;top:.55rem;bottom:2.5rem;width:2px;border-radius:2px;
+  background:linear-gradient(to bottom,var(--accent),color-mix(in srgb,var(--accent) 25%,transparent));
+  transform-origin:top;transform:scaleY(1);
+}
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .timeline__fill{
+      transform:scaleY(0);
+      animation:draw linear both;
+      animation-timeline:view();
+      animation-range:cover 8% cover 72%;
+    }
+  }
+}
+@keyframes draw{to{transform:scaleY(1)}}
+
+.tl-item{position:relative;padding-bottom:clamp(2.5rem,5vw,3.5rem)}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{
+  content:"";position:absolute;
+  left:calc(-1 * clamp(1.75rem,4vw,2.75rem) - 5px);top:.55rem;
+  width:12px;height:12px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--accent);
+}
+.tl-item__period{font-family:var(--mono);font-size:.75rem;letter-spacing:.04em;color:var(--text-3);text-transform:uppercase}
+.tl-item h3{margin-top:.5rem;font-size:clamp(1.15rem,1.05rem + .5vw,1.5rem);letter-spacing:-.025em;font-weight:600;line-height:1.2}
+.tl-item__org{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem .9rem;
+  margin-top:.35rem;font-size:.9375rem;
+}
+.tl-item__org a,.tl-item__org strong{color:var(--accent);font-weight:500}
+.tl-item__org a{border-bottom:1px solid transparent;transition:border-color .18s var(--ease)}
+.tl-item__org a:hover{border-bottom-color:currentColor}
+.tl-item__org span{color:var(--text-3);font-size:.8125rem}
+.tl-item__summary{margin-top:.9rem;color:var(--text-2);max-width:62ch}
+.tl-item__list{margin-top:1rem;display:grid;gap:.7rem;max-width:64ch}
+.tl-item__list li{position:relative;padding-left:1.3rem;color:var(--text-2);font-size:.9375rem}
+.tl-item__list li::before{
+  content:"";position:absolute;left:.1rem;top:.65rem;
+  width:7px;height:1px;background:var(--accent);
+}
+.tl-item__list strong{color:var(--text);font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem}
+.tag{
+  font-family:var(--mono);font-size:.7188rem;letter-spacing:.01em;
+  padding:.3rem .7rem;border-radius:var(--r-pill);
+  border:1px solid var(--line);color:var(--text-3);background:var(--surface);
+}
+
+/* Double class beats .tl-item:last-child{padding-bottom:0}, which would
+   otherwise flatten this card's bottom padding to zero. */
+.tl-item.tl-item--early{
+  border-radius:var(--r-card);border:1px solid var(--line);
+  background:var(--surface);padding:1.6rem;
+}
+.tl-item--early::before{top:1.55rem}
+.tl-item--early h3{margin-top:0;font-size:1.0625rem}
+.early-list{margin-top:1.1rem;display:grid;gap:1rem}
+.early-list li{display:grid;gap:.2rem}
+.early-list b{font-size:.9375rem;font-weight:500}
+.early-list em{font-style:normal;font-family:var(--mono);font-size:.7188rem;color:var(--text-3);letter-spacing:.04em;text-transform:uppercase}
+.early-list p{font-size:.875rem;color:var(--text-2);max-width:60ch}
+
+/* =========================================================
+   PROJETOS  (feature cards with media)
+   ========================================================= */
+.projects{display:grid;gap:clamp(1.5rem,3vw,2.25rem)}
+/* Covers are 16:9 artwork, so they run full width on top and the copy sits below. */
+.project{
+  border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;
+  background:var(--surface);
+  transition:border-color .25s var(--ease),transform .25s var(--ease);
+}
+.project:hover{border-color:var(--line-strong)}
+@media (prefers-reduced-motion:no-preference){.project:hover{transform:translateY(-3px)}}
+
+.project__media{position:relative;aspect-ratio:16/9;background:var(--surface-2);overflow:hidden;border-bottom:1px solid var(--line)}
+.project__media img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.project:hover .project__media img{transform:scale(1.03)}
+.project__media.no-img img{display:none}
+.project__media.no-img::after{
+  content:attr(data-fallback);
+  position:absolute;inset:0;display:grid;place-items:center;padding:2rem;
+  white-space:pre-line;text-align:center;
+  font-family:var(--mono);font-size:clamp(1rem,.9rem + .6vw,1.35rem);font-weight:500;
+  letter-spacing:-.02em;line-height:1.45;color:var(--accent);
+  background:
+    radial-gradient(100% 80% at 80% 10%,var(--accent-wash),transparent 60%),
+    linear-gradient(150deg,var(--surface-2),var(--surface));
+}
+
+.project__body{padding:clamp(1.5rem,3vw,2.5rem);display:flex;flex-direction:column;gap:1.25rem}
+.project__meta{display:flex;flex-wrap:wrap;gap:.35rem 1rem;align-items:baseline}
+.project__meta span{font-family:var(--mono);font-size:.7188rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3)}
+.project__meta span:first-child{color:var(--accent)}
+.project h3{font-size:clamp(1.3rem,1.15rem + .7vw,1.85rem);letter-spacing:-.03em;line-height:1.15;font-weight:600}
+.project dl{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem clamp(1.5rem,3vw,2.5rem)}
+.project dt{
+  font-family:var(--mono);font-size:.7188rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--text-3);margin-bottom:.25rem;
+}
+.project dd{color:var(--text-2);font-size:.9375rem;max-width:52ch}
+.project__numbers{
+  display:flex;flex-wrap:wrap;gap:1.5rem;
+  padding:1rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.project__numbers div{display:grid;gap:.15rem}
+.project__numbers b{font-family:var(--mono);font-size:1.2rem;font-weight:500;letter-spacing:-.03em;color:var(--text)}
+.project__numbers span{font-size:.75rem;color:var(--text-3)}
+/* Primary CTA pinned to the bottom-left of the card body. */
+.project__link{margin-top:auto;align-self:flex-start}
+.project__link i{transition:transform .2s var(--ease)}
+.project__link:hover i{transform:translate(3px,-3px)}
+
+@media (max-width:820px){
+  .project dl{grid-template-columns:1fr;gap:1rem}
+  .project__numbers{gap:1rem 1.5rem}
+}
+
+/* =========================================================
+   SKILLS  (asymmetric grid, two visual treatments)
+   ========================================================= */
+.skills__grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.25rem,3vw,2rem);align-items:start}
+.subhead{
+  font-family:var(--mono);font-size:.7188rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--text-3);margin-bottom:1.25rem;
+}
+.hard{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden}
+.hard li{background:var(--bg);padding:1.35rem;transition:background-color .22s var(--ease)}
+.hard li:hover{background:var(--surface)}
+.hard b{display:block;font-size:.9688rem;font-weight:500;letter-spacing:-.015em}
+.hard p{margin-top:.4rem;font-size:.8438rem;color:var(--text-2);line-height:1.5}
+.hard i{color:var(--accent);font-size:1.2rem;display:block;margin-bottom:.7rem}
+
+.panel{
+  border-radius:var(--r-card);padding:clamp(1.35rem,3vw,1.85rem);
+  border:1px solid var(--line);
+  background:
+    radial-gradient(110% 80% at 100% 0%,var(--accent-wash),transparent 58%),
+    var(--surface);
+}
+.soft{display:grid;gap:.85rem}
+.soft li{display:flex;gap:.7rem;align-items:flex-start;font-size:.9375rem}
+.soft i{color:var(--accent);font-size:1.05rem;margin-top:.15rem;flex:none}
+/* Tools showcase: category filter tabs + logo pills (idea from the
+   Technical Skills section of achyutkatiyar.com). Logos are Simple Icons
+   silhouettes tinted via CSS mask so they inherit the pill's color. */
+.tools{margin-top:clamp(2.75rem,6vw,4rem)}
+.tools__tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 1.75rem}
+.tools__tab{
+  font-size:.875rem;font-weight:500;letter-spacing:-.01em;
+  padding:.5rem 1.05rem;border-radius:var(--r-pill);
+  border:1px solid var(--line);color:var(--text-2);background:var(--bg-elevated);
+  transition:color .2s var(--ease),border-color .2s var(--ease),background-color .2s var(--ease);
+}
+.tools__tab:hover{color:var(--text);border-color:var(--line-strong)}
+.tools__tab[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+
+.tools__grid{display:flex;flex-wrap:wrap;gap:.65rem}
+.tool{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.6rem 1.05rem;border-radius:var(--r-pill);
+  border:1px solid var(--line);background:var(--surface);color:var(--text);
+  font-size:.9375rem;font-weight:500;letter-spacing:-.01em;
+  transition:border-color .2s var(--ease),color .2s var(--ease),background-color .2s var(--ease),transform .2s var(--ease);
+}
+.tool:hover{border-color:var(--accent);color:var(--accent);background:var(--bg-elevated)}
+@media (prefers-reduced-motion:no-preference){.tool:hover{transform:translateY(-2px)}}
+/* Inline SVG (not a mask) so it renders from file:// in Chrome, which
+   blocks CSS mask images as cross-origin. Tints with the pill color. */
+.tool__logo{width:18px;height:18px;flex:none;display:block;fill:currentColor}
+.tool[hidden]{display:none}
+
+@media (max-width:860px){.skills__grid{grid-template-columns:1fr}}
+@media (max-width:520px){.hard{grid-template-columns:1fr}}
+
+/* =========================================================
+   FORMAÇÃO  (grouped, 2 columns, no repeated hairlines)
+   ========================================================= */
+.edu__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+.degree{
+  border-radius:var(--r-card);border:1px solid var(--line);
+  padding:clamp(1.5rem,3vw,2rem);
+  background:
+    radial-gradient(120% 90% at 0% 0%,var(--accent-wash),transparent 60%),
+    var(--surface);
+}
+.degree i{color:var(--accent);font-size:1.6rem}
+.degree h3{margin-top:1rem;font-size:1.35rem;letter-spacing:-.025em;font-weight:600;line-height:1.2}
+.degree p{margin-top:.5rem;color:var(--text-2);font-size:.9375rem}
+.degree .years{margin-top:1.25rem;font-family:var(--mono);font-size:.8125rem;color:var(--text-3);letter-spacing:.04em}
+
+.edu-group+.edu-group{margin-top:2rem}
+.edu-list{display:grid;gap:.9rem;margin-top:1rem}
+.edu-list li{display:flex;gap:.85rem;align-items:flex-start}
+.edu-list li>div{flex:1 1 auto;min-width:0}
+.edu-list i{color:var(--text-3);font-size:1.1rem;margin-top:.15rem;flex:none}
+.edu-list b{display:block;font-size:.9375rem;font-weight:500;letter-spacing:-.01em}
+.edu-list div>span{display:block;font-size:.8125rem;color:var(--text-3);margin-top:.15rem}
+.badge{
+  display:inline-block;margin-left:.5rem;vertical-align:middle;
+  font-family:var(--mono);font-size:.6563rem;letter-spacing:.06em;text-transform:uppercase;
+  padding:.14rem .5rem;border-radius:var(--r-pill);
+  background:var(--accent-wash);color:var(--accent-soft);
+}
+@media (max-width:820px){.edu__grid{grid-template-columns:1fr}}
+
+/* =========================================================
+   CONTATO  (closing statement)
+   ========================================================= */
+.contact{text-align:center}
+.contact h2{margin-inline:auto;max-width:18ch;font-size:clamp(2rem,1.4rem + 2.8vw,3.5rem)}
+.contact .lede{margin-inline:auto;text-align:center;max-width:52ch}
+.contact__actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.75rem;margin-top:2.5rem}
+.contact__actions .sep{width:1px;height:26px;background:var(--line);margin-inline:.25rem}
+@media (max-width:520px){.contact__actions .sep{display:none}}
+
+.footer{border-top:1px solid var(--line);padding-block:2.25rem}
+.footer__inner{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between}
+.footer p{font-size:.8125rem;color:var(--text-3)}
+.footer nav{display:flex;gap:1.25rem}
+.footer nav a{font-size:.8125rem;color:var(--text-3);transition:color .18s var(--ease)}
+.footer nav a:hover{color:var(--accent)}
+
+/* =========================================================
+   REVEAL
+   ========================================================= */
+@media (prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(22px);
+    transition:opacity .7s var(--ease),transform .7s var(--ease);
+    transition-delay:var(--d,0ms);}
+  .reveal.is-in{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+
+@media print{
+  .nav,.about__photo,.project__media,.contact__actions{display:none}
+  body{background:#fff;color:#000}
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="#top" aria-label="Rafael Rocha, início da página">
+      <span class="brand__logo" aria-hidden="true">
+        <svg class="brand__logo--dark" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 7.31707C0 3.27597 3.27597 0 7.31707 0H22.6829C26.724 0 30 3.27597 30 7.31707V22.6829C30 26.724 26.724 30 22.6829 30H7.31707C3.27597 30 0 26.724 0 22.6829V7.31707Z" fill="white"/>
+          <path d="M10.5245 17.6211C11.2646 17.6211 11.7811 17.768 12.0741 18.0618C12.2737 18.2514 12.4124 18.5163 12.4903 18.8566V23.233H7.95752V17.6211H10.5245ZM15.7975 6.76831C17.0309 6.76831 18.1025 6.96931 19.0121 7.37127C19.9372 7.77322 20.6465 8.33746 21.1399 9.06407C21.6486 9.79068 21.903 10.6487 21.903 11.6382C21.903 12.4111 21.7565 13.0991 21.4636 13.702C21.1707 14.2895 20.7467 14.7765 20.1916 15.163C19.826 15.4176 19.4101 15.6184 18.9442 15.7657C19.7023 15.8583 20.2954 16.0903 20.7235 16.4616C21.294 16.9408 21.6101 17.652 21.6717 18.5951L22.0418 23.233H17.4164L17.1851 19.3835C17.1702 19.0923 17.1247 18.839 17.0486 18.6235L17.0463 18.5951C16.9847 17.652 16.6686 16.9408 16.0981 16.4616C15.67 16.0903 15.0769 15.8583 14.3188 15.7657C14.7848 15.6184 15.2006 15.4176 15.5662 15.163C16.1213 14.7765 16.5453 14.2895 16.8382 13.702C16.9499 13.4722 17.0402 13.23 17.1092 12.9755C17.2215 12.7421 17.2776 12.4741 17.2776 12.1715C17.2776 12.0997 17.2746 12.0302 17.2686 11.9628C17.2745 11.8563 17.2776 11.7481 17.2776 11.6382C17.2776 10.6487 17.0233 9.79068 16.5145 9.06407C16.0211 8.33746 15.3118 7.77322 14.3868 7.37127C13.4771 6.96931 12.4056 6.76831 11.1721 6.76831H15.7975ZM10.3395 10.4091C11.095 10.4091 11.6655 10.556 12.0509 10.8497C12.2438 10.9911 12.3902 11.1665 12.4903 11.3759V12.9617C12.3902 13.1753 12.2439 13.3603 12.0509 13.5165C11.6655 13.8257 11.095 13.9803 10.3395 13.9803H7.95752V10.4091H10.3395Z" fill="black"/>
+        </svg>
+        <svg class="brand__logo--light" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 7.31707C0 3.27597 3.27597 0 7.31707 0H22.6829C26.724 0 30 3.27597 30 7.31707V22.6829C30 26.724 26.724 30 22.6829 30H7.31707C3.27597 30 0 26.724 0 22.6829V7.31707Z" fill="black"/>
+          <path d="M10.5247 17.6202C11.2648 17.6202 11.7814 17.7672 12.0744 18.0609C12.274 18.2505 12.4127 18.5154 12.4907 18.8557V23.2317H7.95752V17.6202H10.5247ZM15.7981 6.76831C17.0317 6.76831 18.1033 6.9693 19.013 7.37122C19.9381 7.77314 20.6475 8.33734 21.1409 9.06389C21.6497 9.79044 21.9041 10.6484 21.9041 11.6378C21.9041 12.4107 21.7576 13.0986 21.4647 13.7015C21.1717 14.2889 20.7477 14.7759 20.1926 15.1624C19.8269 15.417 19.411 15.6177 18.945 15.7649C19.7032 15.8576 20.2963 16.0896 20.7245 16.4608C21.295 16.94 21.6111 17.6512 21.6728 18.5941L22.0429 23.2317H17.4171L17.1859 19.3825C17.171 19.0913 17.1254 18.838 17.0493 18.6226L17.0471 18.5941C16.9854 17.6512 16.6693 16.94 16.0988 16.4608C15.6706 16.0896 15.0774 15.8576 14.3193 15.7649C14.7853 15.6177 15.2012 15.417 15.5668 15.1624C16.1219 14.7759 16.546 14.2889 16.8389 13.7015C16.9506 13.4717 17.0409 13.2295 17.11 12.975C17.2222 12.7417 17.2783 12.4737 17.2783 12.171C17.2783 12.0993 17.2753 12.0297 17.2693 11.9624C17.2752 11.8559 17.2783 11.7477 17.2783 11.6378C17.2783 10.6484 17.024 9.79044 16.5151 9.06389C16.0217 8.33734 15.3124 7.77314 14.3873 7.37122C13.4775 6.9693 12.4059 6.76831 11.1724 6.76831H15.7981ZM10.3397 10.4089C11.0953 10.4089 11.6658 10.5557 12.0512 10.8494C12.2442 10.9908 12.3906 11.1662 12.4907 11.3755V12.9612C12.3906 13.1748 12.2442 13.3598 12.0512 13.516C11.6658 13.8252 11.0953 13.9798 10.3397 13.9798H7.95752V10.4089H10.3397Z" fill="white"/>
+        </svg>
+      </span>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Seções do site">
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#skills">Skills</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="nav__tools">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Alternar tema claro e escuro">
+        <i class="ph ph-sun" id="themeIcon" aria-hidden="true"></i>
+      </button>
+      <button class="icon-btn nav__toggle" id="menuBtn" type="button"
+              aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="navLinks">
+        <i class="ph ph-list" id="menuIcon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="top">
+    <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="hero__grid wrap">
+      <div class="hero__copy">
+        <h1>Rafael Rocha</h1>
+        <p class="hero__role">UX/UI Designer Pleno. <b>Ajudo equipes a transformar problemas complexos em produtos fáceis de usar.</b></p>
+        <p class="hero__sub">Produtos de fintech desde 2021: pesquisa com usuário real, design system e entrega no ritmo do time.</p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#projetos">Ver projetos <i class="ph ph-arrow-down" aria-hidden="true"></i></a>
+          <a class="btn btn--ghost" href="mailto:rafael.dg.bottaro@gmail.com?subject=Oportunidade%20de%20UX%2FUI%20Design">Falar comigo</a>
+          <span class="sep" aria-hidden="true"></span>
+          <a class="icon-btn" href="https://www.linkedin.com/in/rafaelbttrocha/" target="_blank" rel="noopener" aria-label="LinkedIn de Rafael Rocha"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+          <a class="icon-btn" href="https://www.behance.net/rafaelbttrocha" target="_blank" rel="noopener" aria-label="Behance de Rafael Rocha"><i class="ph ph-behance-logo" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SOBRE ===================== -->
+  <section class="section" id="sobre">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="title">Interface que resolve: intuitiva para quem usa, decisiva para o negócio.</h2>
+      </div>
+
+      <div class="about__grid">
+        <div class="about__aside reveal">
+          <figure class="about__photo" data-fallback="RR" data-shot>
+            <img src="assets/rafael-rocha.jpg" alt="Retrato de Rafael Rocha, UX/UI Designer" width="800" height="948" loading="lazy">
+          </figure>
+        </div>
+
+        <div class="about__prose reveal" style="--d:120ms">
+          <p>Trabalho com design desde 2021 e o que me interessa é o problema por trás da tela. Antes disso passei sete anos coordenando produto editorial digital, o que me deu prática em olhar para o comportamento de quem lê, toca e desiste.</p>
+          <p>Venho do Design Gráfico e acredito no beta contínuo: produto digital não fica pronto, ele melhora enquanto está no ar. Meu processo é direto. Entender o problema de verdade, colocar uma versão na rua rápido e ajustar com o que o uso real mostra.</p>
+          <p>Hoje cuido da experiência do app da Ewally e dos portais B2B e administrativo, do discovery à entrega das especificações para desenvolvimento. Gosto de trabalho que aproxima o produto de quem precisa dele, sem enrolação.</p>
+
+          <dl class="stats">
+            <div>
+              <dt>5 anos</dt>
+              <dd>desenhando produto de fintech na Ewally</dd>
+            </div>
+            <div>
+              <dt>30+</dt>
+              <dd>componentes no Design System que estruturei do zero</dd>
+            </div>
+            <div>
+              <dt>50+</dt>
+              <dd>telas redesenhadas em mais de 10 fluxos críticos</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJETOS ===================== -->
+  <section class="section" id="projetos">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Estudos de caso</p>
+        <h2 class="title">Projetos</h2>
+        <p class="lede">Dois recortes do meu processo: um produto desenhado do zero e uma auditoria de interface de quem já está no ar.</p>
+      </div>
+
+      <div class="projects">
+
+        <article class="project reveal">
+          <div class="project__media" data-fallback="NutriFlow&#10;app do cliente" data-shot>
+            <img src="assets/nutriflow-cover.jpg" alt="Capa do estudo de caso NutriFlow com três telas do app: upload do plano alimentar, home com a refeição do momento e tela de progresso" loading="lazy" width="1600" height="901">
+          </div>
+          <div class="project__body">
+            <p class="project__meta">
+              <span>UX/UI end to end</span>
+              <span>2026</span>
+              <span>7 meses</span>
+            </p>
+            <h3>NutriFlow, dieta saudável sempre à disposição</h3>
+            <dl>
+              <div>
+                <dt>Problema</dt>
+                <dd>Quem recebe um plano alimentar do nutricionista trava na execução: as refeições são personalizadas e artesanais, e no corre do dia a dia ninguém consegue preparar nem pedir.</dd>
+              </div>
+              <div>
+                <dt>Solução</dt>
+                <dd>Um app em que a IA lê o plano enviado por foto ou PDF, monta o calendário de refeições e entrega tudo pronto em casa. O pedido cabe em três passos: período, entrega e pagamento.</dd>
+              </div>
+            </dl>
+            <div class="project__numbers">
+              <div><b>83</b><span>respostas na pesquisa quantitativa</span></div>
+              <div><b>5</b><span>entrevistas em profundidade</span></div>
+              <div><b>100%</b><span>sucesso na tarefa de pedido no teste</span></div>
+            </div>
+            <a class="btn btn--primary project__link" href="nutriflow.html">
+              Ver projeto <i class="ph ph-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project__media" data-fallback="Mercado Livre&#10;análise heurística" data-shot>
+            <img src="assets/mercadolivre-cover.jpg" alt="Capa do estudo de caso do Mercado Livre com o mockup da busca por notebook, mostrando o painel de filtros e o grupo Avaliação marcado como ausente" loading="lazy" width="1600" height="900">
+          </div>
+          <div class="project__body">
+            <p class="project__meta">
+              <span>Análise heurística</span>
+              <span>2026</span>
+            </p>
+            <h3>Por que o Mercado Livre não tem filtro por avaliação?</h3>
+            <dl>
+              <div>
+                <dt>Problema</dt>
+                <dd>A nota em estrelas aparece nos cards de resultado, mas não serve como critério de busca. A Amazon oferece esse filtro desde 2013.</dd>
+              </div>
+              <div>
+                <dt>Solução</dt>
+                <dd>Auditoria do fluxo de busca pelas 10 heurísticas de Nielsen e proposta de um filtro por avaliação que convive com a reputação do vendedor, com salvaguarda para produtos com poucas opiniões.</dd>
+              </div>
+            </dl>
+            <div class="project__numbers">
+              <div><b>21</b><span>grupos de filtro mapeados na categoria Notebooks</span></div>
+              <div><b>0</b><span>filtram por avaliação</span></div>
+            </div>
+            <a class="btn btn--primary project__link" href="mercado-livre.html">
+              Ver projeto <i class="ph ph-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project__media" data-fallback="Blu&#10;Design System" data-shot>
+            <img src="assets/blu-cover.jpg" alt="Capa do Blu, o Design System da Ewally: logo, biblioteca de componentes com botões, seleção e campos de texto" loading="lazy" width="1600" height="947">
+          </div>
+          <div class="project__body">
+            <p class="project__meta">
+              <span>Design System</span>
+              <span>2024-25</span>
+              <span>Material Design 3</span>
+            </p>
+            <h3>Blu Design System</h3>
+            <dl>
+              <div>
+                <dt>O que é</dt>
+                <dd>Um kit de Design System construído sobre o Google Material Design 3, com componentes e tokens prontos para acelerar a criação de interfaces.</dd>
+              </div>
+              <div>
+                <dt>Feito com</dt>
+                <dd>Prototipado no Figma Make, seguindo as diretrizes e os padrões do Material Design 3.</dd>
+              </div>
+            </dl>
+            <a class="btn btn--primary project__link" href="https://www.figma.com/make/rxgOkB791fakSm00unQLQK/Blu-Design-System---Google-Material-Design-3-Kit?t=acadFZdxxvGPt9QF-20&amp;fullscreen=1" target="_blank" rel="noopener">
+              Ver no Figma <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIÊNCIA (movida para depois dos projetos) ===================== -->
+  <section class="section" id="experiencia" data-move-experiencia>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="title">Experiência</h2>
+        <p class="lede">De assistente de arte em revista impressa a designer de produto em fintech. A linha abaixo mostra o caminho na ordem em que aconteceu.</p>
+      </div>
+
+      <div class="timeline">
+        <span class="timeline__fill" aria-hidden="true"></span>
+
+        <article class="tl-item reveal">
+          <p class="tl-item__period">fev 2023, hoje</p>
+          <h3>UX/UI Designer Pleno</h3>
+          <p class="tl-item__org">
+            <a href="https://www.linkedin.com/company/ewallyapp" target="_blank" rel="noopener">Ewally</a>
+            <span>3 anos e 6 meses</span>
+            <span>São Paulo, SP</span>
+          </p>
+          <p class="tl-item__summary">Liderança da reestruturação completa da experiência do aplicativo Ewally, cobrindo também o Portal B2B e o Portal Administrativo, do discovery à entrega de especificações para desenvolvimento.</p>
+          <ul class="tl-item__list">
+            <li>Criei e mantenho o <strong>Design System da Ewally</strong> no Figma, com mais de 30 componentes entre botões, modais e inputs. Reduziu a inconsistência visual entre produtos e acelerou a entrega de novas features pelo time.</li>
+            <li>Redesenhei mais de <strong>10 fluxos críticos e 50 telas</strong>, sempre a partir de ciclos de pesquisa com usuários reais, com entrevistas e testes de usabilidade.</li>
+            <li>Enxuguei as etapas do fluxo de Pix e gerei <strong>5% de queda nos problemas de transferência</strong> registrados pelo suporte.</li>
+            <li>Cortei <strong>5 minutos do tempo médio</strong> de execução das tarefas de antifraude, medido em teste de usabilidade.</li>
+            <li>Entreguei OKRs em ciclos de 3 meses ao lado de 1 PM e 2 desenvolvedores, em metodologia ágil.</li>
+          </ul>
+          <ul class="tags">
+            <li class="tag">Figma</li>
+            <li class="tag">Design System</li>
+            <li class="tag">Prototipagem</li>
+            <li class="tag">Testes de usabilidade</li>
+            <li class="tag">Pesquisa qualitativa</li>
+            <li class="tag">Handoff</li>
+          </ul>
+        </article>
+
+        <article class="tl-item reveal">
+          <p class="tl-item__period">jan 2021, fev 2023</p>
+          <h3>UX/UI Designer</h3>
+          <p class="tl-item__org">
+            <a href="https://www.linkedin.com/company/ewallyapp" target="_blank" rel="noopener">Ewally</a>
+            <span>2 anos e 2 meses</span>
+          </p>
+          <p class="tl-item__summary">Evolução inicial da experiência do aplicativo, com foco em redesign de interfaces e na estruturação dos primeiros processos de design da empresa.</p>
+          <ul class="tl-item__list">
+            <li>Participei dos primeiros ciclos de pesquisa com usuários que embasaram as decisões de redesign do app.</li>
+            <li>Contribuí para criar as bases do Design System adotado depois pela empresa.</li>
+            <li>Prototipei e testei soluções em colaboração direta com os times de produto e desenvolvimento.</li>
+          </ul>
+        </article>
+
+        <article class="tl-item reveal">
+          <p class="tl-item__period">abr 2018, jan 2021</p>
+          <h3>Consultor de UX e front-end</h3>
+          <p class="tl-item__org">
+            <a href="https://www.linkedin.com/company/ez4" target="_blank" rel="noopener">EZ4, IT easy for you</a>
+            <span>2 anos e 10 meses</span>
+            <span>São Paulo, SP</span>
+          </p>
+          <p class="tl-item__summary">Consultoria em UX e desenvolvimento front-end para clientes corporativos na plataforma Fluig, da TOTVS.</p>
+          <ul class="tl-item__list">
+            <li>Desenvolvi protótipos e conduzi testes de usabilidade para validar interfaces antes do desenvolvimento.</li>
+            <li>Criei layouts e interfaces responsivas para desktop e mobile.</li>
+            <li>É daqui que vem minha <strong>fluência técnica</strong>: hoje colaboro com engenharia e faço handoff com muito mais precisão.</li>
+          </ul>
+        </article>
+
+        <article class="tl-item reveal">
+          <p class="tl-item__period">jan 2010, mar 2017</p>
+          <h3>Coordenador de publicidade digital</h3>
+          <p class="tl-item__org">
+            <a href="https://www.linkedin.com/company/editora-abril-s-a" target="_blank" rel="noopener">Editora Abril</a>
+            <span>7 anos e 3 meses</span>
+            <span>São Paulo, SP</span>
+          </p>
+          <p class="tl-item__summary">Coordenação de publicidade digital para produtos editoriais em tablet, nas revistas VEJA e VEJA São Paulo, com prática em UX para iOS e Android.</p>
+          <ul class="tl-item__list">
+            <li>Participei dos fechamentos das edições digitais desde a primeira, a edição 2181, de setembro de 2010.</li>
+            <li>Conduzi testes de aplicativos em iOS e Android, avaliando usabilidade e experiência de leitura.</li>
+            <li>Implementei novos títulos no portfólio digital da editora.</li>
+          </ul>
+        </article>
+
+        <article class="tl-item tl-item--early reveal">
+          <h3>Início de carreira</h3>
+          <ul class="early-list">
+            <li>
+              <em>mai 2009, ago 2009</em>
+              <b>Designer gráfico freelancer, Editora CARAS</b>
+              <p>Projetos especiais de marketing. Criação de peças para eventos da editora e para captação de patrocínio.</p>
+            </li>
+            <li>
+              <em>ago 2008, out 2008</em>
+              <b>Assistente de arte, Editora CARAS</b>
+              <p>Projeto especial do anuário CARAS Noivas 2008, com 400 páginas e tiragem de 40 mil exemplares.</p>
+            </li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SKILLS ===================== -->
+  <section class="section" id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="title">O que eu levo para o time</h2>
+      </div>
+
+      <div class="skills__grid">
+        <div class="reveal">
+          <p class="subhead">Hard skills</p>
+          <ul class="hard">
+            <li>
+              <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+              <b>UX Research aplicada</b>
+              <p>Entrevistas, testes de usabilidade e pesquisa contínua que viram decisão de produto, não relatório de gaveta.</p>
+            </li>
+            <li>
+              <i class="ph ph-squares-four" aria-hidden="true"></i>
+              <b>Design System</b>
+              <p>Estruturei o da Ewally do zero, com mais de 30 componentes documentados no Figma.</p>
+            </li>
+            <li>
+              <i class="ph ph-cursor-click" aria-hidden="true"></i>
+              <b>Prototipagem de alta fidelidade</b>
+              <p>Protótipos navegáveis prontos para teste com usuário e para handoff com desenvolvimento.</p>
+            </li>
+            <li>
+              <i class="ph ph-chart-line-up" aria-hidden="true"></i>
+              <b>Visão de métricas e produto</b>
+              <p>OKR, framework HEART e leitura de dado de suporte para priorizar o que muda o número.</p>
+            </li>
+            <li>
+              <i class="ph ph-code" aria-hidden="true"></i>
+              <b>Fluência técnica</b>
+              <p>Background em front-end. Conversa de igual para igual com engenharia sobre o que é viável.</p>
+            </li>
+            <li>
+              <i class="ph ph-bank" aria-hidden="true"></i>
+              <b>Contexto fintech e Open Finance</b>
+              <p>Pix, antifraude, portais B2B e administrativos. Fluxo crítico, com dinheiro e confiança em jogo.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="reveal" style="--d:120ms">
+          <p class="subhead">Soft skills</p>
+          <div class="panel">
+            <ul class="soft">
+              <li><i class="ph ph-handshake" aria-hidden="true"></i><span>Colaboração próxima com PM e desenvolvimento, do refinamento ao aceite</span></li>
+              <li><i class="ph ph-lightbulb" aria-hidden="true"></i><span>Foco no problema, não na tela</span></li>
+              <li><i class="ph ph-flag-checkered" aria-hidden="true"></i><span>Orientação a resultado, com métrica combinada antes de começar</span></li>
+              <li><i class="ph ph-chat-teardrop-text" aria-hidden="true"></i><span>Comunicação clara, inclusive com quem não é de design</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tools reveal">
+        <p class="subhead">Ferramentas</p>
+        <div class="tools__tabs" role="group" aria-label="Filtrar ferramentas por categoria">
+          <button class="tools__tab" type="button" data-filter="todas" aria-pressed="true">Todas</button>
+          <button class="tools__tab" type="button" data-filter="ux" aria-pressed="false">UX e UI</button>
+          <button class="tools__tab" type="button" data-filter="graf" aria-pressed="false">Design gráfico</button>
+          <button class="tools__tab" type="button" data-filter="colab" aria-pressed="false">Colaboração</button>
+        </div>
+        <ul class="tools__grid" id="toolsGrid">
+          <li class="tool" data-cat="ux"><svg class="tool__logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>Figma</li>
+          <li class="tool" data-cat="ux"><svg class="tool__logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4.25.3C1.9.3 0 2.2 0 4.55v14.9c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3Zm14.07 5.13h2.03c.05-.01.09.03.1.07v9.54c0 .18.01.38.02.6.02.21.03.41.04.58 0 .07-.03.13-.1.16-.52.22-1.07.38-1.63.48-.51.09-1.02.14-1.54.14-.74.01-1.48-.14-2.15-.45-.63-.29-1.15-.77-1.51-1.36-.37-.61-.55-1.37-.55-2.28a4.107 4.107 0 0 1 2.14-3.66c.7-.39 1.54-.58 2.53-.58.05 0 .12 0 .21.01s.19.01.31.02V5.54c0-.07.03-.11.1-.11zM3.68 6.3h2.27c.05 0 .1.01.14.02.04.02.07.05.1.09.19.43.41.86.64 1.29.24.43.47.85.72 1.27.24.42.46.84.67 1.27h.02c.21-.44.43-.87.65-1.29.22-.42.45-.84.68-1.26.23-.42.45-.85.67-1.26.01-.04.03-.08.06-.1a.19.19 0 0 1 .13-.02h2.11c.05-.01.1.02.11.07.01.01-.01.05-.03.07l-3 4.95 3.2 5.25c.02.04.03.08.02.12-.01.04-.05.01-.11.02h-2.29c-.16 0-.27-.01-.34-.11-.21-.42-.43-.83-.64-1.25-.21-.41-.44-.83-.68-1.26-.24-.43-.48-.86-.72-1.3h-.02c-.21.43-.44.86-.67 1.29-.23.43-.46.86-.68 1.28-.23.42-.46.85-.69 1.26-.04.1-.12.11-.23.11h-2.2c-.04 0-.07.02-.07-.03a.14.14 0 0 1 .02-.11l3.11-5.1L3.6 6.44c-.03-.04-.04-.08-.02-.1.02-.03.06-.04.1-.04zm13.94 4.23c-.39 0-.78.08-1.13.26-.34.17-.63.42-.85.74-.22.32-.33.75-.33 1.27-.01.35.05.7.17 1.03.1.27.25.51.45.71.19.18.42.32.68.4.27.09.55.13.83.13.15 0 .29-.01.42-.02.13.01.24-.01.36-.05v-4.4c-.09-.02-.18-.04-.27-.05-.11-.01-.22-.02-.33-.02Z"/></svg>Adobe XD</li>
+          <li class="tool" data-cat="ux"><svg class="tool__logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M17.392 0H13.9L17 4.808 10.444 0H6.949l3.102 6.3L3.494 0H0l3.05 8.131L0 24h3.494L10.05 6.985 6.949 24h3.494L17 5.494 13.899 24h3.493L24 3.672 17.392 0z"/></svg>Miro</li>
+          <li class="tool" data-cat="ux"><svg class="tool__logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M1.126 16.547c-1.5013-1.4881-1.5013-3.9009 0-5.389l4.0778-4.042c1.2692-1.258 3.205-1.4525 4.6803-.5836.4564.2687.4524.8852.077 1.2573-.3753.372-.988.34-1.4975.1923-.6524-.1891-1.386-.0287-1.9006.4813l-4.0777 4.0419a1.8935 1.8935 0 0 0 0 2.6945c.7506.744 1.9678.744 2.7184 0l8.1555-8.0836c1.5014-1.4882 3.9355-1.4882 5.437 0l4.0778 4.0418c1.5013 1.4881 1.5013 3.901 0 5.389-1.5014 1.4882-3.9356 1.4882-5.437 0l-1.3593-1.3472-1.699 1.684c-1.2692 1.258-3.205 1.4526-4.6804.5837-.4563-.2687-.4523-.8852-.077-1.2573.3754-.372.988-.34 1.4975-.1923.6524.1892 1.386.0287 1.9006-.4813l1.7476-1.7322c.724-.7175 1.8975-.7175 2.6214 0l1.4078 1.3954c.7507.744 1.9678.744 2.7186 0a1.8936 1.8936 0 0 0 0-2.6945l-4.0779-4.0419c-.7507-.744-1.9678-.744-2.7185 0L6.563 16.5471c-1.5014 1.4882-3.9356 1.4881-5.437 0"/></svg>Maze</li>
+          <li class="tool" data-cat="ux"><svg class="tool__logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg>Claude</li>
+          <li class="tool" data-cat="graf"><svg class="tool__logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M9.85 8.42c-.37-.15-.77-.21-1.18-.2-.26 0-.49 0-.68.01-.2-.01-.34 0-.41.01v3.36c.14.01.27.02.39.02h.53c.39 0 .78-.06 1.15-.18.32-.09.6-.28.82-.53.21-.25.31-.59.31-1.03.01-.31-.07-.62-.23-.89-.17-.26-.41-.46-.7-.57zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.899c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zm-7.391 11.65c-.399.56-.959.98-1.609 1.22-.68.25-1.43.34-2.25.34-.24 0-.4 0-.5-.01s-.24-.01-.43-.01v3.209c.01.07-.04.131-.11.141H5.52c-.08 0-.12-.041-.12-.131V6.42c0-.07.03-.11.1-.11.17 0 .33 0 .56-.01.24-.01.49-.01.76-.02s.56-.01.87-.02c.31-.01.61-.01.91-.01.82 0 1.5.1 2.06.31.5.17.96.45 1.34.82.32.32.57.71.73 1.14.149.42.229.85.229 1.3.001.86-.199 1.57-.6 2.13zm7.091 3.89c-.28.4-.671.709-1.12.891-.49.209-1.09.318-1.811.318-.459 0-.91-.039-1.359-.129-.35-.061-.7-.17-1.02-.32-.07-.039-.121-.109-.111-.189v-1.74c0-.029.011-.07.041-.09.029-.02.06-.01.09.01.39.23.8.391 1.24.49.379.1.779.15 1.18.15.38 0 .65-.051.83-.141.16-.07.27-.24.27-.42 0-.141-.08-.27-.24-.4-.16-.129-.489-.279-.979-.471-.51-.18-.979-.42-1.42-.719-.31-.221-.569-.51-.761-.85-.159-.32-.239-.67-.229-1.021 0-.43.12-.84.341-1.21.25-.4.619-.72 1.049-.92.469-.239 1.059-.349 1.769-.349.41 0 .83.03 1.24.09.3.04.59.12.86.23.039.01.08.05.1.09.01.04.02.08.02.12v1.63c0 .04-.02.08-.05.1-.09.02-.14.02-.18 0-.3-.16-.62-.27-.96-.34-.37-.08-.74-.13-1.12-.13-.2-.01-.41.02-.601.07-.129.03-.24.1-.31.2-.05.08-.08.18-.08.27s.04.18.101.26c.09.11.209.2.34.27.229.12.47.23.709.33.541.18 1.061.43 1.541.73.33.209.6.49.789.83.16.318.24.67.23 1.029.011.471-.129.94-.389 1.331z"/></svg>Photoshop</li>
+          <li class="tool" data-cat="graf"><svg class="tool__logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M10.53 10.73c-.1-.31-.19-.61-.29-.92-.1-.31-.19-.6-.27-.89-.08-.28-.15-.54-.22-.78h-.02c-.09.43-.2.86-.34 1.29-.15.48-.3.98-.46 1.48-.14.51-.29.98-.44 1.4h2.54c-.06-.211-.14-.46-.23-.721-.09-.269-.18-.559-.27-.859zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.9c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zM14.7 16.83h-2.091c-.069.01-.139-.04-.159-.11l-.82-2.38H7.91l-.76 2.35c-.02.09-.1.15-.19.141H5.08c-.11 0-.14-.061-.11-.18L8.19 7.38c.03-.1.06-.21.1-.33.04-.21.06-.43.06-.65-.01-.05.03-.1.08-.11h2.59c.08 0 .12.03.13.08l3.65 10.3c.03.109 0 .16-.1.16zm3.4-.15c0 .11-.039.16-.129.16H16.01c-.1 0-.15-.061-.15-.16v-7.7c0-.1.041-.14.131-.14h1.98c.09 0 .129.05.129.14v7.7zm-.209-9.03c-.231.24-.571.37-.911.35-.33.01-.65-.12-.891-.35-.23-.25-.35-.58-.34-.92-.01-.34.12-.66.359-.89.242-.23.562-.35.892-.35.391 0 .689.12.91.35.22.24.34.56.33.89.01.34-.11.67-.349.92z"/></svg>Illustrator</li>
+          <li class="tool" data-cat="colab"><svg class="tool__logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M21.147 0H2.853A2.86 2.86 0 000 2.853v18.294A2.86 2.86 0 002.853 24h18.294A2.86 2.86 0 0024 21.147V2.853A2.86 2.86 0 0021.147 0zM10.34 17.287a.953.953 0 01-.953.953h-4a.954.954 0 01-.954-.953V5.38a.953.953 0 01.954-.953h4a.954.954 0 01.953.953zm9.233-5.467a.944.944 0 01-.953.947h-4a.947.947 0 01-.953-.947V5.38a.953.953 0 01.953-.953h4a.954.954 0 01.953.953z"/></svg>Trello</li>
+          <li class="tool" data-cat="colab"><svg class="tool__logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/></svg>Notion</li>
+          <li class="tool" data-cat="colab"><svg class="tool__logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg>Slack</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FORMAÇÃO ===================== -->
+  <section class="section" id="formacao">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="title">Formação e certificados</h2>
+      </div>
+
+      <div class="edu__grid">
+        <div class="degree reveal">
+          <i class="ph ph-graduation-cap" aria-hidden="true"></i>
+          <h3>Bacharelado em Design Gráfico</h3>
+          <p>Centro Universitário Senac</p>
+          <p class="years">2004, 2008</p>
+        </div>
+
+        <div class="reveal" style="--d:120ms">
+          <div class="edu-group">
+            <p class="subhead">Cursos</p>
+            <ul class="edu-list">
+              <li>
+                <i class="ph ph-code" aria-hidden="true"></i>
+                <div>
+                  <b>Interfaces Web com HTML, CSS e JavaScript</b>
+                  <span>IME-USP, 30 horas, 2018</span>
+                </div>
+              </li>
+              <li>
+                <i class="ph ph-books" aria-hidden="true"></i>
+                <div>
+                  <b>UX Unicórnio <span class="badge">em andamento</span></b>
+                  <span>UX Unicórnio, 2026</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="edu-group">
+            <p class="subhead">Certificados</p>
+            <ul class="edu-list">
+              <li>
+                <i class="ph ph-seal-check" aria-hidden="true"></i>
+                <div>
+                  <b>Workshop Portfólio de IA e UX</b>
+                  <span>UX Unicórnio, 2026</span>
+                </div>
+              </li>
+              <li>
+                <i class="ph ph-seal-check" aria-hidden="true"></i>
+                <div>
+                  <b>Workshop Triplo UX</b>
+                  <span>UX Unicórnio, 2023</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTATO ===================== -->
+  <section class="section contact" id="contato">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Contato</p>
+        <h2 class="title" style="margin-top:.85rem">Gostou do meu trabalho? Me chama para conversar.</h2>
+
+        <div class="contact__actions">
+          <a class="btn btn--primary" href="mailto:rafael.dg.bottaro@gmail.com?subject=Oportunidade%20de%20UX%2FUI%20Design">
+            <i class="ph ph-envelope-simple" aria-hidden="true"></i> Falar comigo
+          </a>
+          <a class="btn btn--ghost" href="assets/rafael-rocha-cv.pdf" target="_blank" rel="noopener">
+            <i class="ph ph-file-arrow-down" aria-hidden="true"></i> Baixar currículo
+          </a>
+          <span class="sep" aria-hidden="true"></span>
+          <a class="icon-btn" href="https://www.linkedin.com/in/rafaelbttrocha/" target="_blank" rel="noopener" aria-label="LinkedIn de Rafael Rocha"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+          <a class="icon-btn" href="https://www.behance.net/rafaelbttrocha" target="_blank" rel="noopener" aria-label="Behance de Rafael Rocha"><i class="ph ph-behance-logo" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p>Rafael Rocha, UX/UI Designer Pleno. São Paulo, Brasil.</p>
+    <nav aria-label="Links externos">
+      <a href="https://www.linkedin.com/in/rafaelbttrocha/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.behance.net/rafaelbttrocha" target="_blank" rel="noopener">Behance</a>
+      <a href="mailto:rafael.dg.bottaro@gmail.com">Email</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- theme ---------- */
+  var root = document.documentElement;
+  var themeBtn = document.getElementById('themeBtn');
+  var themeIcon = document.getElementById('themeIcon');
+  var stored = null;
+  try { stored = localStorage.getItem('rr-theme'); } catch (e) {}
+
+  function paint(theme) {
+    root.setAttribute('data-theme', theme);
+    themeIcon.className = theme === 'dark' ? 'ph ph-sun' : 'ph ph-moon';
+    themeBtn.setAttribute('aria-label', theme === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro');
+  }
+
+  var media = window.matchMedia('(prefers-color-scheme: light)');
+  paint(stored || (media.matches ? 'light' : 'dark'));
+
+  media.addEventListener('change', function (e) {
+    if (!stored) paint(e.matches ? 'light' : 'dark');
+  });
+
+  themeBtn.addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    stored = next;
+    try { localStorage.setItem('rr-theme', next); } catch (e) {}
+    paint(next);
+  });
+
+  /* ---------- mobile menu ---------- */
+  var menuBtn = document.getElementById('menuBtn');
+  var menuIcon = document.getElementById('menuIcon');
+  var links = document.getElementById('navLinks');
+  var mqDesktop = window.matchMedia('(min-width: 901px)');
+
+  function setMenu(open) {
+    links.hidden = !open;
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuIcon.className = open ? 'ph ph-x' : 'ph ph-list';
+    menuBtn.setAttribute('aria-label', open ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
+  }
+  function syncMenu() {
+    if (mqDesktop.matches) { links.hidden = false; menuBtn.setAttribute('aria-expanded', 'false'); }
+    else { setMenu(false); }
+  }
+  syncMenu();
+  mqDesktop.addEventListener('change', syncMenu);
+  menuBtn.addEventListener('click', function () { setMenu(links.hidden); });
+  links.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A' && !mqDesktop.matches) setMenu(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !mqDesktop.matches && !links.hidden) { setMenu(false); menuBtn.focus(); }
+  });
+
+  /* ---------- image fallback: branded poster when a cover is missing ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-shot] img'), function (img) {
+    function fail() { img.closest('[data-shot]').classList.add('no-img'); }
+    img.addEventListener('error', fail);
+    if (img.complete && img.naturalWidth === 0) fail();
+  });
+
+  /* ---------- scroll reveal (storytelling: content arrives as you read down) ---------- */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var revealables = document.querySelectorAll('.reveal');
+
+  if (reduce.matches || !('IntersectionObserver' in window)) {
+    Array.prototype.forEach.call(revealables, function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('is-in'); io.unobserve(entry.target); }
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+    Array.prototype.forEach.call(revealables, function (el) { io.observe(el); });
+  }
+
+  /* ---------- nav: border on scroll + current section (IntersectionObserver, no scroll listeners) ---------- */
+  var nav = document.getElementById('nav');
+  var sentinel = document.createElement('div');
+  sentinel.setAttribute('aria-hidden', 'true');
+  sentinel.style.cssText = 'position:absolute;top:0;height:1px;width:1px';
+  document.body.prepend(sentinel);
+  new IntersectionObserver(function (entries) {
+    nav.classList.toggle('is-stuck', !entries[0].isIntersecting);
+  }).observe(sentinel);
+
+  var navMap = {};
+  Array.prototype.forEach.call(links.querySelectorAll('a'), function (a) {
+    navMap[a.getAttribute('href').slice(1)] = a;
+  });
+  var spy = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      var a = navMap[entry.target.id];
+      if (!a) return;
+      if (entry.isIntersecting) {
+        Array.prototype.forEach.call(links.querySelectorAll('a'), function (x) { x.removeAttribute('aria-current'); });
+        a.setAttribute('aria-current', 'true');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  Object.keys(navMap).forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) spy.observe(el);
+  });
+
+  /* =========================================================
+     HERO PARTICLE FIELD
+     Anti-gravity field: each particle is spring-tied to its origin, the
+     cursor pushes them away, and they collide elastically on the way back.
+     Motivation: the hero is the one place the page invites you to touch it.
+     Ported to plain canvas (no framework), themed to the page accent,
+     paused when off-screen or when the tab is hidden, and skipped
+     entirely under prefers-reduced-motion.
+     ========================================================= */
+  (function heroField() {
+    var canvas = document.getElementById('heroCanvas');
+    var hero = document.getElementById('top');
+    if (!canvas || !hero || !canvas.getContext) return;
+
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    var DENSITY = 0.00012;      // particles per css pixel squared
+    var MAX_PARTICLES = 260;    // hard cap so big monitors stay smooth
+    var BG_DENSITY = 0.00005;
+    var MAX_BG = 110;
+    var MOUSE_RADIUS = 180;
+    var RETURN_SPEED = 0.08;    // spring constant back to origin
+    var DAMPING = 0.90;
+    var REPULSION = 1.2;
+    var RESTITUTION = 0.85;     // bounciness on collision
+    var CELL = 28;              // spatial grid cell, must exceed 2x max radius
+
+    var particles = [];
+    var bg = [];
+    var w = 0, h = 0;
+    var mouse = { x: -9999, y: -9999, active: false };
+    var raf = 0, running = false, visible = false;
+    var brand = [137, 233, 0];    // lime, for glow + primary sparks
+    var mint = [0, 233, 175];     // mint, the secondary sparks
+    var inkIsLight = true;
+
+    function rand(a, b) { return Math.random() * (b - a) + a; }
+
+    function toRGB(value, fallback) {
+      var m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec((value || '').trim());
+      return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : fallback;
+    }
+
+    function readTheme() {
+      var cs = getComputedStyle(document.documentElement);
+      // Use the theme-resolved accent so sparks stay visible in both modes
+      // (bright lime on dark, deep green on cream).
+      brand = toRGB(cs.getPropertyValue('--accent'), brand);
+      mint = toRGB(cs.getPropertyValue('--accent-2'), mint);
+      inkIsLight = document.documentElement.getAttribute('data-theme') !== 'light';
+    }
+
+    function build() {
+      var rect = hero.getBoundingClientRect();
+      w = Math.max(1, Math.round(rect.width));
+      h = Math.max(1, Math.round(rect.height));
+
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      var count = Math.min(MAX_PARTICLES, Math.floor(w * h * DENSITY));
+      particles = new Array(count);
+      for (var i = 0; i < count; i++) {
+        var x = Math.random() * w, y = Math.random() * h;
+        // Mostly neutral dust, with lime and mint sparks mixed in.
+        var r = Math.random();
+        particles[i] = {
+          x: x, y: y, originX: x, originY: y,
+          vx: 0, vy: 0,
+          size: rand(1, 2.5),
+          tone: r > 0.88 ? 'mint' : (r > 0.74 ? 'brand' : 'ink')
+        };
+      }
+
+      var bgCount = Math.min(MAX_BG, Math.floor(w * h * BG_DENSITY));
+      bg = new Array(bgCount);
+      for (var j = 0; j < bgCount; j++) {
+        bg[j] = {
+          x: Math.random() * w, y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.2,
+          vy: (Math.random() - 0.5) * 0.2,
+          size: rand(0.5, 1.5),
+          alpha: rand(0.1, 0.4),
+          phase: Math.random() * Math.PI * 2
+        };
+      }
+    }
+
+    /* Uniform grid keeps collisions near O(n). The naive pairwise loop is
+       O(n squared), which stalls once the field passes ~200 particles. */
+    function collide() {
+      var cols = Math.ceil(w / CELL) || 1;
+      var rows = Math.ceil(h / CELL) || 1;
+      var grid = [];
+      var i, k;
+
+      for (i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        var cx = p.x < 0 ? 0 : (p.x / CELL) | 0; if (cx >= cols) cx = cols - 1;
+        var cy = p.y < 0 ? 0 : (p.y / CELL) | 0; if (cy >= rows) cy = rows - 1;
+        k = cy * cols + cx;
+        if (grid[k]) grid[k].push(i); else grid[k] = [i];
+      }
+
+      // Half-neighbourhood so each pair is tested exactly once.
+      var offs = [[0, 0], [1, 0], [-1, 1], [0, 1], [1, 1]];
+
+      for (var gy = 0; gy < rows; gy++) {
+        for (var gx = 0; gx < cols; gx++) {
+          var cell = grid[gy * cols + gx];
+          if (!cell) continue;
+
+          for (var o = 0; o < offs.length; o++) {
+            var nx2 = gx + offs[o][0], ny2 = gy + offs[o][1];
+            if (nx2 < 0 || nx2 >= cols || ny2 >= rows) continue;
+            var other = grid[ny2 * cols + nx2];
+            if (!other) continue;
+            var same = (o === 0);
+
+            for (var a = 0; a < cell.length; a++) {
+              for (var b = same ? a + 1 : 0; b < other.length; b++) {
+                resolve(particles[cell[a]], particles[other[b]]);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    function resolve(p1, p2) {
+      var dx = p2.x - p1.x, dy = p2.y - p1.y;
+      var distSq = dx * dx + dy * dy;
+      var minDist = p1.size + p2.size;
+      if (distSq >= minDist * minDist) return;
+
+      var dist = Math.sqrt(distSq);
+      if (dist <= 0.01) return;
+
+      var nx = dx / dist, ny = dy / dist;
+
+      // Static resolution: separate the overlap.
+      var overlap = minDist - dist;
+      var pushX = nx * overlap * 0.5, pushY = ny * overlap * 0.5;
+      p1.x -= pushX; p1.y -= pushY;
+      p2.x += pushX; p2.y += pushY;
+
+      // Dynamic resolution: elastic impulse, mass proxied by size.
+      var along = (p1.vx - p2.vx) * nx + (p1.vy - p2.vy) * ny;
+      if (along <= 0) return;
+
+      var m1 = p1.size, m2 = p2.size;
+      var j = (-(1 + RESTITUTION) * along) / (1 / m1 + 1 / m2);
+      p1.vx += (j * nx) / m1; p1.vy += (j * ny) / m1;
+      p2.vx -= (j * nx) / m2; p2.vy -= (j * ny) / m2;
+    }
+
+    function frame(time) {
+      ctx.clearRect(0, 0, w, h);
+
+      var vr = brand[0], vg = brand[1], vb = brand[2];   // primary green
+      var mr = mint[0], mg = mint[1], mb = mint[2];       // mint
+
+      // Pulsating radial glow: green core fading through a faint mint ring.
+      var pulse = Math.sin(time * 0.0008) * 0.035 + 0.075;
+      var grad = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, Math.max(w, h) * 0.72);
+      grad.addColorStop(0, 'rgba(' + vr + ',' + vg + ',' + vb + ',' + pulse + ')');
+      grad.addColorStop(0.55, 'rgba(' + mr + ',' + mg + ',' + mb + ',' + (pulse * 0.4).toFixed(4) + ')');
+      grad.addColorStop(1, 'rgba(' + vr + ',' + vg + ',' + vb + ',0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, h);
+
+      // Drifting, twinkling dust.
+      var dust = inkIsLight ? '255,255,255' : '20,18,16';
+      for (var i = 0; i < bg.length; i++) {
+        var s = bg[i];
+        s.x += s.vx; s.y += s.vy;
+        if (s.x < 0) s.x = w; else if (s.x > w) s.x = 0;
+        if (s.y < 0) s.y = h; else if (s.y > h) s.y = 0;
+
+        var twinkle = Math.sin(time * 0.002 + s.phase) * 0.5 + 0.5;
+        ctx.fillStyle = 'rgba(' + dust + ',' + (s.alpha * (0.3 + 0.7 * twinkle)).toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Forces: cursor repulsion, then the spring home.
+      for (var n = 0; n < particles.length; n++) {
+        var p = particles[n];
+
+        if (mouse.active) {
+          var mdx = mouse.x - p.x, mdy = mouse.y - p.y;
+          var d = Math.sqrt(mdx * mdx + mdy * mdy);
+          if (d < MOUSE_RADIUS && d > 0.01) {
+            var force = ((MOUSE_RADIUS - d) / MOUSE_RADIUS) * REPULSION * 5;
+            p.vx -= (mdx / d) * force;
+            p.vy -= (mdy / d) * force;
+          }
+        }
+
+        p.vx += (p.originX - p.x) * RETURN_SPEED;
+        p.vy += (p.originY - p.y) * RETURN_SPEED;
+      }
+
+      collide();
+
+      // Integrate and draw.
+      var ink = inkIsLight ? '255,255,255' : '20,18,16';
+      for (var m = 0; m < particles.length; m++) {
+        var q = particles[m];
+        q.vx *= DAMPING; q.vy *= DAMPING;
+        q.x += q.vx; q.y += q.vy;
+
+        var speed = Math.sqrt(q.vx * q.vx + q.vy * q.vy);
+        var alpha = Math.min(0.28 + speed * 0.1, 0.9);
+        var sparkA = Math.min(alpha + 0.2, 1).toFixed(3);
+
+        if (q.tone === 'brand') {
+          ctx.fillStyle = 'rgba(' + vr + ',' + vg + ',' + vb + ',' + sparkA + ')';
+        } else if (q.tone === 'mint') {
+          ctx.fillStyle = 'rgba(' + mr + ',' + mg + ',' + mb + ',' + sparkA + ')';
+        } else {
+          ctx.fillStyle = 'rgba(' + ink + ',' + alpha.toFixed(3) + ')';
+        }
+        ctx.beginPath();
+        ctx.arc(q.x, q.y, q.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      raf = requestAnimationFrame(frame);
+    }
+
+    function start() {
+      if (running) return;
+      running = true;
+      raf = requestAnimationFrame(frame);
+    }
+    function stop() {
+      running = false;
+      cancelAnimationFrame(raf);
+    }
+    function sync() {
+      if (visible && !document.hidden && !reduce.matches) start(); else stop();
+    }
+
+    readTheme();
+    build();
+
+    hero.addEventListener('mousemove', function (e) {
+      var r = hero.getBoundingClientRect();
+      mouse.x = e.clientX - r.left;
+      mouse.y = e.clientY - r.top;
+      mouse.active = true;
+    });
+    hero.addEventListener('mouseleave', function () { mouse.active = false; });
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () { build(); }, 180);
+    });
+
+    // Only burn frames while the hero is actually on screen.
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting;
+        sync();
+      }, { threshold: 0 }).observe(hero);
+    } else {
+      visible = true;
+    }
+
+    document.addEventListener('visibilitychange', sync);
+    reduce.addEventListener('change', sync);
+
+    // Repaint in the new palette when the theme toggle flips.
+    new MutationObserver(readTheme).observe(document.documentElement, {
+      attributes: true, attributeFilter: ['data-theme']
+    });
+
+    sync();
+  })();
+
+  /* =========================================================
+     ENTRANCE CONTROLLER
+     Splits the hero copy into words (preserving inline tags like the
+     accent <b>), marks nav items as units, then reveals them on load with
+     a blur + rise stagger, in the order: nav, name, role, paragraph, CTAs.
+     ========================================================= */
+  (function entrance() {
+    var root = document.documentElement;
+    if (reduce.matches) { root.classList.remove('anim-ready'); return; }
+
+    // Wrap each word of an element in a .tw span, keeping inline markup and
+    // whitespace intact, and return the spans in reading order.
+    function splitWords(el) {
+      var out = [];
+      (function walk(node) {
+        Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+          if (n.nodeType === 3) {
+            var parts = n.nodeValue.split(/(\s+)/);
+            if (parts.length < 2 && !/\S/.test(n.nodeValue)) return;
+            var frag = document.createDocumentFragment();
+            parts.forEach(function (tok) {
+              if (tok === '') return;
+              if (/^\s+$/.test(tok)) { frag.appendChild(document.createTextNode(tok)); return; }
+              var s = document.createElement('span');
+              s.className = 'tw';
+              s.textContent = tok;
+              frag.appendChild(s);
+              out.push(s);
+            });
+            node.replaceChild(frag, n);
+          } else if (n.nodeType === 1) {
+            walk(n);
+          }
+        });
+      })(el);
+      return out;
+    }
+
+    var units = [];  // { el, delay }
+
+    function push(el, delay) { if (el) units.push({ el: el, delay: delay }); }
+    function pushWords(el, base, step) {
+      if (!el) return base;
+      var spans = splitWords(el);
+      spans.forEach(function (s, i) { units.push({ el: s, delay: base + i * step }); });
+      return base + spans.length * step;
+    }
+
+    try {
+      // Nav items as whole units. Animate the links only when the bar is
+      // actually showing them (desktop); on mobile they live in the dropdown.
+      push(document.querySelector('.brand'), 40);
+      var navLinks = document.querySelector('.nav__links');
+      if (navLinks && getComputedStyle(navLinks).display !== 'none') {
+        Array.prototype.forEach.call(navLinks.querySelectorAll('a'), function (a, i) {
+          a.classList.add('tw'); units.push({ el: a, delay: 110 + i * 65 });
+        });
+      }
+      var tools = document.querySelector('.nav__tools');
+      if (tools) { tools.classList.add('tw'); push(tools, 440); }
+
+      // Hero, in sequence: name, then role, then paragraph, then CTAs.
+      pushWords(document.querySelector('.hero h1'), 220, 90);
+      pushWords(document.querySelector('.hero__role'), 560, 42);
+      pushWords(document.querySelector('.hero__sub'), 1010, 17);
+      var actions = document.querySelector('.hero__actions');
+      if (actions) { actions.classList.add('tw'); push(actions, 1330); }
+
+      // Pre-hide rules can step aside now that every unit owns its own state.
+      root.classList.remove('anim-ready');
+
+      // Reflow, then release each unit on its delay.
+      void document.body.offsetWidth;
+      requestAnimationFrame(function () {
+        units.forEach(function (u) {
+          u.el.style.setProperty('--d', u.delay + 'ms');
+          u.el.classList.add('tw--in');
+        });
+      });
+
+      // Drop will-change once the last unit has landed.
+      var last = units.reduce(function (m, u) { return Math.max(m, u.delay); }, 0);
+      setTimeout(function () {
+        units.forEach(function (u) { u.el.classList.add('tw--done'); });
+      }, last + 700);
+    } catch (e) {
+      root.classList.remove('anim-ready');
+      units.forEach(function (u) { u.el.classList.add('tw--in'); });
+    }
+  })();
+
+  /* =========================================================
+     TOOLS FILTER
+     Category tabs filter the logo pills; hidden pills leave the a11y tree.
+     ========================================================= */
+  (function toolsFilter() {
+    var tabs = document.querySelectorAll('.tools__tab');
+    var pills = document.querySelectorAll('#toolsGrid .tool');
+    if (!tabs.length || !pills.length) return;
+
+    function apply(filter) {
+      Array.prototype.forEach.call(pills, function (p) {
+        p.hidden = (filter !== 'todas' && p.getAttribute('data-cat') !== filter);
+      });
+    }
+    Array.prototype.forEach.call(tabs, function (tab) {
+      tab.addEventListener('click', function () {
+        Array.prototype.forEach.call(tabs, function (t) { t.setAttribute('aria-pressed', 'false'); });
+        tab.setAttribute('aria-pressed', 'true');
+        apply(tab.getAttribute('data-filter'));
+      });
+    });
+  })();
+})();
+</script>
+</body>
+</html>

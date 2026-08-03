@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mercado Livre · Análise heurística · Rafael Rocha</title>
+<meta name="description" content="Por que o Mercado Livre não tem um filtro de avaliação por estrelas na busca? Auditoria pelas 10 heurísticas de Nielsen, comparação com a Amazon e proposta com plano de validação.">
+<meta name="author" content="Rafael Rocha">
+<meta name="theme-color" content="#0B0B0C" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FBFAF9" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mercado Livre · Análise heurística · Rafael Rocha">
+<meta property="og:description" content="Auditoria do fluxo de busca e filtros do Mercado Livre pelas 10 heurísticas de Nielsen.">
+<meta property="og:locale" content="pt_BR">
+
+<script>(function(){try{var t=localStorage.getItem('rr-theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(matchMedia('(prefers-color-scheme: light)').matches)document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/case.css">
+</head>
+
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="cnav">
+  <div class="wrap cnav__inner">
+    <a class="cnav__back" href="index.html#projetos"><i class="ph ph-arrow-left" aria-hidden="true"></i> Portfólio</a>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Alternar tema claro e escuro">
+      <i class="ph ph-sun" id="themeIcon" aria-hidden="true"></i>
+    </button>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- HERO -->
+  <section class="chero wrap">
+    <p class="eyebrow">Estudo de caso UX · Heurísticas de Nielsen · 2026</p>
+    <h1>Por que o Mercado Livre não tem um filtro de avaliação por estrelas na busca?</h1>
+    <p class="chero__lead">Uma auditoria do fluxo de busca e filtros do Mercado Livre, comparando com a Amazon. Tudo aqui vem de observação direta na interface ou de fontes públicas que dá para conferir.</p>
+
+    <dl class="chero__meta">
+      <div><dt>Papel</dt><dd>UX Designer</dd></div>
+      <div><dt>Método</dt><dd>Análise heurística</dd></div>
+      <div><dt>Data</dt><dd>Julho de 2026</dd></div>
+      <div><dt>Referência</dt><dd>10 heurísticas de Jakob Nielsen</dd></div>
+    </dl>
+
+    <figure class="cover">
+      <img src="assets/mercadolivre-cover.jpg" alt="Mockup da busca por notebook no Mercado Livre, mostrando o painel de filtros com o grupo Avaliação marcado como ausente" width="1600" height="900">
+    </figure>
+  </section>
+
+  <div class="cbody wrap">
+    <div class="clayout">
+      <div class="carticle">
+
+    <!-- NOTA / CONTEXTO -->
+    <section id="problema" class="section reveal">
+      <h2>O problema e a proposta</h2>
+      <div class="prose">
+        <p><strong>Problema.</strong> Falta do filtro “por avaliação” no resultado de busca. As avaliações de produto (de 1 a 5 estrelas) existem e aparecem nos cards de resultado, só que não servem como critério de busca.</p>
+        <p><strong>Proposta.</strong> Projetar um filtro por avaliação que não atrapalhe o critério de reputação do vendedor, com salvaguarda para produtos com poucas opiniões.</p>
+      </div>
+      <div class="note">Escrevo isso como cliente do Mercado Livre, não como crítico. Essa dúvida sobre a falta do filtro sempre me acompanhou quando eu ia comprar alguma coisa no site. Resolvi investigar com metodologia de UX, com curiosidade genuína e respeito pelo trabalho de quem constrói o produto.</div>
+      <figure class="cfig"><img src="assets/proj/ml-shots.png" alt="Mockup da busca por notebook no Mercado Livre com os cards de resultado" width="1000" height="562" loading="lazy"></figure>
+    </section>
+
+    <!-- EVIDÊNCIA -->
+    <section id="evidencia" class="section reveal">
+      <h2>O que o painel de filtros oferece hoje</h2>
+      <div class="prose">
+        <p>Navegação real em <strong>lista.mercadolivre.com.br/notebook</strong>, categoria Notebooks, +9.999 resultados (capturado em jul/2026). Foram <strong>21 grupos de filtro</strong> observados, na ordem em que aparecem:</p>
+      </div>
+      <ul class="chips">
+        <li class="chip">Chegará hoje</li>
+        <li class="chip">FULL com frete grátis</li>
+        <li class="chip">Internacional</li>
+        <li class="chip">Envio local</li>
+        <li class="chip">Frete grátis</li>
+        <li class="chip">Marca</li>
+        <li class="chip">Linha do processador</li>
+        <li class="chip">Condição</li>
+        <li class="chip">Preço</li>
+        <li class="chip">Pagamento</li>
+        <li class="chip">Descontos</li>
+        <li class="chip">Tempo de entrega</li>
+        <li class="chip">Origem do frete</li>
+        <li class="chip">Retirada grátis</li>
+        <li class="chip">Lojas oficiais</li>
+        <li class="chip">Capacidade de RAM</li>
+        <li class="chip">Sistema operacional</li>
+        <li class="chip">Uso</li>
+        <li class="chip">Capacidade de disco SSD</li>
+        <li class="chip">Tamanho da tela</li>
+        <li class="chip">Capacidade total de disco</li>
+        <li class="chip chip--absent">✕ Avaliação (ausente)</li>
+      </ul>
+      <div class="prose">
+        <p>A avaliação existe, só não é filtro. No painel de busca da <strong>Amazon</strong> existe o filtro “Avaliação dos clientes”, com opções como “4 estrelas ou mais”, documentado publicamente pela própria Amazon desde 2013. Não é um achado escondido.</p>
+      </div>
+      <div class="cfig-2">
+        <figure class="cfig"><img src="assets/proj/ml-contexto1.png" alt="Painel de filtros do Mercado Livre, parte 1" width="848" height="600" loading="lazy"></figure>
+        <figure class="cfig"><img src="assets/proj/ml-contexto2.png" alt="Painel de filtros do Mercado Livre, parte 2" width="848" height="600" loading="lazy"></figure>
+      </div>
+      <figure class="cfig"><img src="assets/proj/ml-contexto3.png" alt="Painel de filtros do Mercado Livre com destaque para a ausência do filtro de avaliação" width="848" height="600" loading="lazy"><figcaption>O painel real, com 21 grupos de filtro e nenhum por avaliação.</figcaption></figure>
+      <figure class="cfig"><img src="assets/proj/ml-card.png" alt="Reconstrução de um card de resultado da busca por notebook, com a média de estrelas visível" width="785" height="404" loading="lazy"><figcaption>A avaliação aparece no card, mas não é filtro.</figcaption></figure>
+    </section>
+
+    <!-- INVESTIGAÇÃO: FATOS -->
+    <section id="fatos" class="section reveal">
+      <h2>Fatos confirmados</h2>
+      <div class="prose">
+        <p>O Mercado Livre não publica explicação oficial para essa ausência, então separo o que consegui confirmar (por observação direta ou fonte pública) do que é só hipótese minha, de raciocínio de UX.</p>
+      </div>
+      <div class="table-scroll">
+        <table class="spec">
+          <thead><tr><th>Fato</th><th>Fonte</th></tr></thead>
+          <tbody>
+            <tr><td>ML permite avaliar produto de 1 a 5 estrelas + comentário.</td><td>developers.mercadolivre.com.br · “Opiniões sobre um produto”</td></tr>
+            <tr><td>Média de estrelas aparece nos cards de busca.</td><td>Observado em lista.mercadolivre.com.br/notebook, jul/2026</td></tr>
+            <tr><td>Não existe filtro por nota na busca.</td><td>Observado · 21 grupos de filtro mapeados, nenhum é “Avaliação”</td></tr>
+            <tr><td>Amazon tem filtro Avaliação dos clientes desde 2013.</td><td>aboutamazon.com · customer reviews and star ratings</td></tr>
+            <tr><td>Catálogo ML agrega notas de vários vendedores.</td><td>vendedores.mercadolivre.com.br · concorrência no catálogo</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figure class="cfig"><img src="assets/proj/ml-heuristicas.png" alt="As 10 heurísticas de Nielsen aplicadas ao fluxo de busca e filtros do Mercado Livre" width="1000" height="2793" loading="lazy"><figcaption>As 10 heurísticas de Nielsen aplicadas ao fluxo de busca e filtros.</figcaption></figure>
+    </section>
+
+    <!-- HIPÓTESES -->
+    <section id="hipoteses" class="section reveal">
+      <h2>Hipóteses plausíveis</h2>
+      <ul class="blist">
+        <li><strong>Fragmentação catálogo vs anúncios individuais.</strong> Nem todo produto está no sistema de Catálogo. Anúncios “iguais” de lojistas diferentes podem existir sem um identificador único (como o ASIN da Amazon), dificultando um filtro de estrelas consistente entre eles.</li>
+        <li><strong>Cold start.</strong> Muitos anúncios têm poucas vendas e poucas opiniões. Um filtro por estrelas poderia zerar resultados em categorias de cauda longa.</li>
+        <li><strong>Herança do modelo de confiança no vendedor.</strong> O ML nasceu como marketplace peer-to-peer (como eBay) e investiu no termômetro de reputação do vendedor como sinal central, diferente da Amazon, de herança de varejo, centrada no produto.</li>
+        <li><strong>Sobrecarga do painel.</strong> Já são 21 grupos de filtro só em “Notebook” (heurística 8, minimalismo). Adicionar mais um filtro de uso incerto compete por espaço e atenção.</li>
+        <li><strong>Risco de manipulação de avaliações.</strong> Hipótese comum na literatura de marketplaces (não confirmada pelo ML): oficializar um filtro baseado em notas amplificaria o incentivo a reviews fraudulentas ou compradas.</li>
+      </ul>
+      <div class="note">As hipóteses acima não substituem uma resposta oficial do ML. Para uma conclusão definitiva, é preciso conversar com a equipe de produto.</div>
+    </section>
+
+    <!-- MOCKUP / OPORTUNIDADE -->
+    <section id="mockup" class="section reveal">
+      <h2>Como o filtro de avaliação ficaria na UI</h2>
+      <div class="prose">
+        <p>Um mockup rápido, de baixa fidelidade, usando o mesmo estilo visual do painel de filtros atual do ML. A ideia é mostrar onde e como o filtro entraria, não fechar uma especificação de interface.</p>
+      </div>
+      <ul class="blist">
+        <li><strong>Posição:</strong> logo depois dos filtros de entrega/frete e antes de “Marca”, a mesma posição que a Amazon usa.</li>
+        <li><strong>Salvaguarda de cold start:</strong> o filtro só aparece para produtos com um volume mínimo de opiniões (pensei em 10+), para não esvaziar a busca em categorias menos populares.</li>
+        <li><strong>Estilo consistente:</strong> reaproveitei a mesma lista de opções já usada em “Marca”, “Condição” e “Preço”, sem inventar um componente novo.</li>
+      </ul>
+      <figure class="cfig"><img src="assets/proj/ml-oportunidades.png" alt="Oportunidades de melhoria priorizadas a partir dos achados heurísticos" width="1000" height="1595" loading="lazy"><figcaption>Oportunidades de melhoria, priorizadas.</figcaption></figure>
+      <div class="cfig-2">
+        <figure class="cfig"><img src="assets/proj/ml-antes.png" alt="Painel de filtros do Mercado Livre hoje, sem o filtro de avaliação" width="800" height="1560" loading="lazy"><figcaption>Antes (hoje).</figcaption></figure>
+        <figure class="cfig"><img src="assets/proj/ml-depois.png" alt="Proposta do painel de filtros com o novo grupo de avaliação por estrelas" width="800" height="1560" loading="lazy"><figcaption>Depois (proposta).</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- VALIDAÇÃO -->
+    <section id="validacao" class="section reveal">
+      <h2>Nada disso deveria ir direto para produção</h2>
+      <div class="prose">
+        <p>Esta é a sequência de validação que eu seguiria: primeiro pesquisa qualitativa, depois teste controlado, sempre com critério claro de decisão antes de começar.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__head"><span class="step__num" aria-hidden="true"></span><b>Entrevistas com compradores</b><span class="step__tag">Qualitativo · 6-8</span></div>
+          <dl>
+            <div><dt>Objetivo</dt><dd>Entender como as pessoas decidem hoje se “esse produto é bom”, sem um filtro de nota: reputação do vendedor, volume de vendas, fotos de outros clientes.</dd></div>
+            <div><dt>Método</dt><dd>Entrevista moderada de 30 min. Tarefa: “encontre o notebook mais bem avaliado” na busca atual, observando o caminho sem induzir a resposta.</dd></div>
+            <div><dt>Aprendizado</dt><dd>Sinal de que a ausência do filtro é fricção real percebida, ou de que o usuário já resolve isso de outro jeito.</dd></div>
+          </dl>
+        </div>
+        <div class="step">
+          <div class="step__head"><span class="step__num" aria-hidden="true"></span><b>Teste de usabilidade com protótipo</b><span class="step__tag">Moderado · 8-10</span></div>
+          <dl>
+            <div><dt>Objetivo</dt><dd>Comparar o painel atual com o painel com o filtro de avaliação proposto.</dd></div>
+            <div><dt>Método</dt><dd>Teste A/B moderado com protótipo clicável no Figma. Mesma tarefa: “encontre um notebook com pelo menos 4 estrelas”.</dd></div>
+            <div><dt>Métrica</dt><dd>Tempo até a tarefa, taxa de sucesso, nº de cliques e SUS pós-tarefa, comparando os dois painéis.</dd></div>
+          </dl>
+        </div>
+        <div class="step">
+          <div class="step__head"><span class="step__num" aria-hidden="true"></span><b>Piloto controlado em produção</b><span class="step__tag">A/B · 2-4 semanas</span></div>
+          <dl>
+            <div><dt>Objetivo</dt><dd>Medir impacto real, começando pelas categorias com maior volume de opiniões (notebooks, celulares) antes de expandir.</dd></div>
+            <div><dt>Método</dt><dd>Split 50/50 nas categorias piloto. Métricas primárias: taxa de clique no card → ficha do produto, e taxa de conversão.</dd></div>
+            <div><dt>Guardrail</dt><dd>Taxa de reclamação/devolução pós-compra e nº médio de resultados retornados por busca.</dd></div>
+          </dl>
+        </div>
+        <div class="step">
+          <div class="step__head"><span class="step__num" aria-hidden="true"></span><b>Critério de decisão (Go / No-Go)</b><span class="step__tag">Antes do teste</span></div>
+          <dl>
+            <div><dt>Objetivo</dt><dd>Definir antes do teste o que conta como sucesso, para não racionalizar o resultado depois.</dd></div>
+            <div><dt>Regra</dt><dd>Se conversão sobe ou se mantém E reclamações não sobem → expandir gradualmente. Se o nº de resultados cair demais em cauda longa → aplicar o filtro só a produtos com 10+ opiniões.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCLUSÃO -->
+    <section id="conclusao" class="section reveal">
+      <h2>Uma lacuna que é oportunidade</h2>
+      <div class="prose">
+        <p>O Mercado Livre já coleta e mostra avaliação de produto, de 1 a 5 estrelas, mas não transforma isso em critério de busca, ao contrário da Amazon. E essa ausência não parece esquecimento: o painel de filtros já é enorme (21 grupos só em Notebooks) e o site aposta pesado em outro sinal de confiança, a reputação do vendedor.</p>
+        <p>Mesmo assim, acho que a lacuna é uma oportunidade real. Um filtro bem pensado, com salvaguarda contra cold start e contra manipulação de review, poderia dar mais confiança na hora de comprar <strong>sem brigar com o sistema de reputação que já existe</strong>.</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cend reveal">
+      <h2>Quer ver a análise completa?</h2>
+      <p>A versão no Notion traz as 10 heurísticas aplicadas uma a uma, o mockup antes/depois e todas as fontes.</p>
+      <div class="cend__actions">
+        <a class="btn btn--primary" href="https://portfolio-rafaelrochauxuidesigner.notion.site/An-lise-Heur-stica-do-Mercado-Livre-35a2d75911ba80d98201db2278dd456a" target="_blank" rel="noopener"><i class="ph ph-arrow-up-right" aria-hidden="true"></i> Versão completa no Notion</a>
+        <a class="btn btn--ghost" href="index.html#projetos"><i class="ph ph-arrow-left" aria-hidden="true"></i> Voltar aos projetos</a>
+      </div>
+    </section>
+
+      </div>
+      <aside class="toc" aria-label="Índice desta página">
+        <nav class="toc__inner">
+          <p class="toc__title">Nesta página</p>
+          <a href="#problema">Problema e proposta</a>
+          <a href="#evidencia">Evidência</a>
+          <a href="#fatos">Fatos confirmados</a>
+          <a href="#hipoteses">Hipóteses</a>
+          <a href="#mockup">Proposta de filtro</a>
+          <a href="#validacao">Como eu validaria</a>
+          <a href="#conclusao">Conclusão</a>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="cfoot">
+  <div class="wrap cfoot__inner">
+    <p>Rafael Rocha, UX/UI Designer Pleno. Análise heurística · Julho de 2026.</p>
+    <nav aria-label="Links externos">
+      <a href="index.html">Portfólio</a>
+      <a href="https://www.linkedin.com/in/rafaelbttrocha/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:rafael.dg.bottaro@gmail.com">Email</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var root=document.documentElement, btn=document.getElementById('themeBtn'), icon=document.getElementById('themeIcon');
+  var stored=null; try{stored=localStorage.getItem('rr-theme');}catch(e){}
+  function paint(t){root.setAttribute('data-theme',t);icon.className=t==='dark'?'ph ph-sun':'ph ph-moon';
+    btn.setAttribute('aria-label',t==='dark'?'Ativar tema claro':'Ativar tema escuro');}
+  paint(root.getAttribute('data-theme')||'dark');
+  btn.addEventListener('click',function(){var n=root.getAttribute('data-theme')==='dark'?'light':'dark';stored=n;
+    try{localStorage.setItem('rr-theme',n);}catch(e){}paint(n);});
+
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)'), els=document.querySelectorAll('.reveal');
+  if(reduce.matches||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-in');});}
+  else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('is-in');io.unobserve(x.target);}});},{rootMargin:'0px 0px -10% 0px',threshold:.1});
+    els.forEach(function(e){io.observe(e);});}
+
+  // Table of contents scroll-spy: highlight the section being read.
+  var toc=document.querySelector('.toc');
+  if(toc&&'IntersectionObserver' in window){
+    var map={}; toc.querySelectorAll('a').forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+    var spy=new IntersectionObserver(function(en){en.forEach(function(e){var a=map[e.target.id];if(!a)return;
+      if(e.isIntersecting){toc.querySelectorAll('a').forEach(function(x){x.removeAttribute('aria-current');});a.setAttribute('aria-current','true');}});},
+      {rootMargin:'-20% 0px -70% 0px'});
+    Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el);});
+  }
+})();
+</script>
+</body>
+</html>
