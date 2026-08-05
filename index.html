@@ -277,6 +277,17 @@ h2.title{
 @media (max-width:860px){
   .hero__actions .sep{display:none}
 }
+/* Narrow phones: the two CTAs share the first row and the social icons drop
+   to a tidy row of their own (the separator becomes a full-width line break). */
+@media (max-width:460px){
+  .hero__actions .sep{display:block;flex-basis:100%;width:auto;height:0;margin:0;background:none}
+}
+/* Very narrow phones (~360px): shrink the CTAs so they sit comfortably. */
+@media (max-width:400px){
+  .btn{padding:.66rem 1.05rem;font-size:.875rem;gap:.4rem}
+  .hero__actions{gap:.6rem;margin-top:2rem}
+  .icon-btn{width:38px;height:38px;font-size:1.05rem}
+}
 
 /* =========================================================
    ENTRANCE (staggered word/item reveal, blur + rise on load)
