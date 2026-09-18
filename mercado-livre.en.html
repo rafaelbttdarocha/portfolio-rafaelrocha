@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mercado Livre · Heuristic evaluation · Rafael Rocha</title>
+<meta name="description" content="Why doesn't Mercado Livre have a star-rating filter in search? An audit against Nielsen's 10 heuristics, a comparison with Amazon, and a proposal with a validation plan.">
+<meta name="author" content="Rafael Rocha">
+<meta name="theme-color" content="#0B0B0C" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FBFAF9" media="(prefers-color-scheme: light)">
+<link rel="canonical" href="https://rafaelbttrocha.com/mercado-livre.en.html">
+<link rel="alternate" hreflang="pt-BR" href="https://rafaelbttrocha.com/mercado-livre.html">
+<link rel="alternate" hreflang="en" href="https://rafaelbttrocha.com/mercado-livre.en.html">
+<link rel="alternate" hreflang="x-default" href="https://rafaelbttrocha.com/mercado-livre.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mercado Livre · Heuristic evaluation · Rafael Rocha">
+<meta property="og:description" content="An audit of Mercado Livre's search and filter flow against Nielsen's 10 heuristics.">
+<meta property="og:locale" content="en_US">
+
+<script>(function(){try{var t=localStorage.getItem('rr-theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(matchMedia('(prefers-color-scheme: light)').matches)document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/case.css">
+</head>
+
+<body>
+<a class="skip" href="#conteudo">Skip to content</a>
+
+<header class="cnav">
+  <div class="wrap cnav__inner">
+    <a class="cnav__back" href="index.en.html#projetos"><i class="ph ph-arrow-left" aria-hidden="true"></i> Portfolio</a>
+    <div class="cnav__tools">
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <a href="mercado-livre.html" hreflang="pt-BR" lang="pt-BR">PT</a>
+        <a href="mercado-livre.en.html" hreflang="en" lang="en" aria-current="true">EN</a>
+      </div>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle light and dark theme">
+        <i class="ph ph-sun" id="themeIcon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- HERO -->
+  <section class="chero wrap">
+    <p class="eyebrow">UX case study · Nielsen's heuristics · 2026</p>
+    <h1>Why doesn't Mercado Livre have a star-rating filter in search?</h1>
+    <p class="chero__lead">An audit of Mercado Livre's search and filter flow, compared with Amazon. Everything here comes from direct observation of the interface or from public sources you can check.</p>
+
+    <dl class="chero__meta">
+      <div><dt>Role</dt><dd>UX Designer</dd></div>
+      <div><dt>Method</dt><dd>Heuristic evaluation</dd></div>
+      <div><dt>Date</dt><dd>July 2026</dd></div>
+      <div><dt>Reference</dt><dd>Jakob Nielsen's 10 heuristics</dd></div>
+    </dl>
+
+    <figure class="cover">
+      <img src="assets/mercadolivre-cover.jpg" alt="Mockup of a notebook search on Mercado Livre, showing the filter panel with the Rating group marked as missing" width="1600" height="900">
+    </figure>
+  </section>
+
+  <div class="cbody wrap">
+    <div class="clayout">
+      <div class="carticle">
+
+    <!-- NOTA / CONTEXTO -->
+    <section id="problema" class="section reveal">
+      <h2>The problem and the proposal</h2>
+      <div class="prose">
+        <p><strong>Problem.</strong> There's no “by rating” filter in search results. Product ratings (1 to 5 stars) exist and appear on result cards, but they can't be used as a search criterion.</p>
+        <p><strong>Proposal.</strong> Design a rating filter that doesn't get in the way of the seller-reputation signal, with a safeguard for products with few reviews.</p>
+      </div>
+      <div class="note">I write this as a Mercado Livre customer, not a critic. This question about the missing filter always stuck with me when I shopped on the site. I decided to investigate it with UX methodology, out of genuine curiosity and respect for the people who build the product.</div>
+      <figure class="cfig"><img src="assets/proj/ml-shots.png" alt="Mockup of a notebook search on Mercado Livre with the result cards" width="1000" height="562" loading="lazy"></figure>
+    </section>
+
+    <!-- EVIDÊNCIA -->
+    <section id="evidencia" class="section reveal">
+      <h2>What the filter panel offers today</h2>
+      <div class="prose">
+        <p>Live browsing on <strong>lista.mercadolivre.com.br/notebook</strong>, the Notebooks category, 9,999+ results (captured Jul 2026). I observed <strong>21 filter groups</strong>, in the order they appear:</p>
+      </div>
+      <ul class="chips">
+        <li class="chip">Arrives today</li>
+        <li class="chip">FULL with free shipping</li>
+        <li class="chip">International</li>
+        <li class="chip">Local shipping</li>
+        <li class="chip">Free shipping</li>
+        <li class="chip">Brand</li>
+        <li class="chip">Processor line</li>
+        <li class="chip">Condition</li>
+        <li class="chip">Price</li>
+        <li class="chip">Payment</li>
+        <li class="chip">Discounts</li>
+        <li class="chip">Delivery time</li>
+        <li class="chip">Shipping origin</li>
+        <li class="chip">Free pickup</li>
+        <li class="chip">Official stores</li>
+        <li class="chip">RAM capacity</li>
+        <li class="chip">Operating system</li>
+        <li class="chip">Use</li>
+        <li class="chip">SSD capacity</li>
+        <li class="chip">Screen size</li>
+        <li class="chip">Total storage</li>
+        <li class="chip chip--absent">✕ Rating (missing)</li>
+      </ul>
+      <div class="prose">
+        <p>The rating exists, it just isn't a filter. Amazon's search panel has a “Customer reviews” filter, with options like “4 stars or more”, publicly documented by Amazon since 2013. It's not a hidden finding.</p>
+      </div>
+      <div class="cfig-2">
+        <figure class="cfig"><img src="assets/proj/ml-contexto1.png" alt="Mercado Livre filter panel, part 1" width="848" height="600" loading="lazy"></figure>
+        <figure class="cfig"><img src="assets/proj/ml-contexto2.png" alt="Mercado Livre filter panel, part 2" width="848" height="600" loading="lazy"></figure>
+      </div>
+      <figure class="cfig"><img src="assets/proj/ml-contexto3.png" alt="Mercado Livre filter panel highlighting the missing rating filter" width="848" height="600" loading="lazy"><figcaption>The real panel, with 21 filter groups and none for rating.</figcaption></figure>
+      <figure class="cfig"><img src="assets/proj/ml-card.png" alt="Reconstruction of a notebook search result card, with the average star rating visible" width="785" height="404" loading="lazy"><figcaption>The rating shows on the card, but it isn't a filter.</figcaption></figure>
+    </section>
+
+    <!-- INVESTIGAÇÃO: FATOS -->
+    <section id="fatos" class="section reveal">
+      <h2>Confirmed facts</h2>
+      <div class="prose">
+        <p>Mercado Livre doesn't publish an official explanation for this gap, so I separate what I could confirm (by direct observation or a public source) from what's just my own UX-reasoning hypothesis.</p>
+      </div>
+      <div class="table-scroll">
+        <table class="spec">
+          <thead><tr><th>Fact</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>ML lets you rate a product 1 to 5 stars + a comment.</td><td>developers.mercadolivre.com.br · “Product opinions”</td></tr>
+            <tr><td>The average star rating appears on search cards.</td><td>Observed on lista.mercadolivre.com.br/notebook, Jul 2026</td></tr>
+            <tr><td>There's no rating filter in search.</td><td>Observed · 21 filter groups mapped, none is “Rating”</td></tr>
+            <tr><td>Amazon has had a Customer reviews filter since 2013.</td><td>aboutamazon.com · customer reviews and star ratings</td></tr>
+            <tr><td>ML's catalog aggregates ratings from multiple sellers.</td><td>vendedores.mercadolivre.com.br · catalog competition</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figure class="cfig"><img src="assets/proj/ml-heuristicas.png" alt="Nielsen's 10 heuristics applied to Mercado Livre's search and filter flow" width="1000" height="2793" loading="lazy"><figcaption>Nielsen's 10 heuristics applied to the search and filter flow.</figcaption></figure>
+    </section>
+
+    <!-- HIPÓTESES -->
+    <section id="hipoteses" class="section reveal">
+      <h2>Plausible hypotheses</h2>
+      <ul class="blist">
+        <li><strong>Catalog vs individual listings fragmentation.</strong> Not every product is in the Catalog system. “Identical” listings from different sellers can exist without a single unique identifier (like Amazon's ASIN), which makes a consistent star filter across them hard.</li>
+        <li><strong>Cold start.</strong> Many listings have few sales and few reviews. A star filter could return zero results in long-tail categories.</li>
+        <li><strong>Seller-trust model heritage.</strong> ML started as a peer-to-peer marketplace (like eBay) and invested in the seller-reputation meter as its central signal, unlike Amazon, with its retail heritage centered on the product.</li>
+        <li><strong>Panel overload.</strong> There are already 21 filter groups just for “Notebook” (heuristic 8, minimalism). Adding one more filter of uncertain use competes for space and attention.</li>
+        <li><strong>Risk of rating manipulation.</strong> A common hypothesis in the marketplace literature (not confirmed by ML): making a rating-based filter official would amplify the incentive for fake or paid reviews.</li>
+      </ul>
+      <div class="note">The hypotheses above don't replace an official answer from ML. A definitive conclusion would require talking to the product team.</div>
+    </section>
+
+    <!-- MOCKUP / OPORTUNIDADE -->
+    <section id="mockup" class="section reveal">
+      <h2>How the rating filter would look in the UI</h2>
+      <div class="prose">
+        <p>A quick, low-fidelity mockup using the same visual style as ML's current filter panel. The idea is to show where and how the filter would fit, not to finalize an interface spec.</p>
+      </div>
+      <ul class="blist">
+        <li><strong>Placement:</strong> right after the delivery/shipping filters and before “Brand”, the same spot Amazon uses.</li>
+        <li><strong>Cold-start safeguard:</strong> the filter only appears for products with a minimum number of reviews (I thought 10+), so it doesn't empty out search in less popular categories.</li>
+        <li><strong>Consistent style:</strong> I reused the same option-list pattern already used in “Brand”, “Condition”, and “Price”, without inventing a new component.</li>
+      </ul>
+      <figure class="cfig"><img src="assets/proj/ml-oportunidades.png" alt="Improvement opportunities prioritized from the heuristic findings" width="1000" height="1595" loading="lazy"><figcaption>Prioritized improvement opportunities.</figcaption></figure>
+      <div class="cfig-2">
+        <figure class="cfig"><img src="assets/proj/ml-antes.png" alt="Mercado Livre filter panel today, without the rating filter" width="800" height="1560" loading="lazy"><figcaption>Before (today).</figcaption></figure>
+        <figure class="cfig"><img src="assets/proj/ml-depois.png" alt="Proposed filter panel with the new star-rating group" width="800" height="1560" loading="lazy"><figcaption>After (proposal).</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- VALIDAÇÃO -->
+    <section id="validacao" class="section reveal">
+      <h2>None of this should go straight to production</h2>
+      <div class="prose">
+        <p>This is the validation sequence I'd follow: qualitative research first, then a controlled test, always with a clear decision criterion set before starting.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__head"><span class="step__num" aria-hidden="true"></span><b>Interviews with buyers</b><span class="step__tag">Qualitative · 6-8</span></div>
+          <dl>
+            <div><dt>Goal</dt><dd>Understand how people decide today whether “this product is good”, without a rating filter: seller reputation, sales volume, photos from other customers.</dd></div>
+            <div><dt>Method</dt><dd>30-min moderated interview. Task: “find the best-rated notebook” in the current search, observing the path without leading the answer.</dd></div>
+            <div><dt>Learning</dt><dd>A signal that the missing filter is real perceived friction, or that users already solve it another way.</dd></div>
+          </dl>
+        </div>
+        <div class="step">
+          <div class="step__head"><span class="step__num" aria-hidden="true"></span><b>Usability test with a prototype</b><span class="step__tag">Moderated · 8-10</span></div>
+          <dl>
+            <div><dt>Goal</dt><dd>Compare the current panel with the panel that has the proposed rating filter.</dd></div>
+            <div><dt>Method</dt><dd>Moderated A/B test with a clickable Figma prototype. Same task: “find a notebook with at least 4 stars”.</dd></div>
+            <div><dt>Metric</dt><dd>Time on task, success rate, number of clicks, and post-task SUS, comparing the two panels.</dd></div>
+          </dl>
+        </div>
+        <div class="step">
+          <div class="step__head"><span class="step__num" aria-hidden="true"></span><b>Controlled pilot in production</b><span class="step__tag">A/B · 2-4 weeks</span></div>
+          <dl>
+            <div><dt>Goal</dt><dd>Measure real impact, starting with the categories that have the most reviews (notebooks, phones) before expanding.</dd></div>
+            <div><dt>Method</dt><dd>50/50 split in the pilot categories. Primary metrics: card → product-page click rate, and conversion rate.</dd></div>
+            <div><dt>Guardrail</dt><dd>Post-purchase complaint/return rate and average number of results returned per search.</dd></div>
+          </dl>
+        </div>
+        <div class="step">
+          <div class="step__head"><span class="step__num" aria-hidden="true"></span><b>Decision criterion (Go / No-Go)</b><span class="step__tag">Before the test</span></div>
+          <dl>
+            <div><dt>Goal</dt><dd>Define what counts as success before the test, so the result isn't rationalized afterward.</dd></div>
+            <div><dt>Rule</dt><dd>If conversion rises or holds AND complaints don't rise → expand gradually. If the result count drops too much in the long tail → apply the filter only to products with 10+ reviews.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCLUSÃO -->
+    <section id="conclusao" class="section reveal">
+      <h2>A gap that's an opportunity</h2>
+      <div class="prose">
+        <p>Mercado Livre already collects and shows product ratings, 1 to 5 stars, but it doesn't turn that into a search criterion, unlike Amazon. And this gap doesn't look like an oversight: the filter panel is already huge (21 groups just for Notebooks) and the site bets heavily on another trust signal, seller reputation.</p>
+        <p>Even so, I think the gap is a real opportunity. A well-thought-out filter, with safeguards against cold start and review manipulation, could add confidence at purchase time <strong>without fighting the reputation system that already exists</strong>.</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cend reveal">
+      <h2>Want the full analysis?</h2>
+      <p>The Notion version walks through the 10 heuristics one by one, the before/after mockup, and all the sources.</p>
+      <div class="cend__actions">
+        <a class="btn btn--primary" href="https://portfolio-rafaelrochauxuidesigner.notion.site/An-lise-Heur-stica-do-Mercado-Livre-35a2d75911ba80d98201db2278dd456a" target="_blank" rel="noopener"><i class="ph ph-arrow-up-right" aria-hidden="true"></i> Full case study on Notion</a>
+        <a class="btn btn--ghost" href="index.en.html#projetos"><i class="ph ph-arrow-left" aria-hidden="true"></i> Back to work</a>
+      </div>
+    </section>
+
+      </div>
+      <aside class="toc" aria-label="Page contents">
+        <nav class="toc__inner">
+          <p class="toc__title">On this page</p>
+          <a href="#problema">Problem and proposal</a>
+          <a href="#evidencia">Evidence</a>
+          <a href="#fatos">Confirmed facts</a>
+          <a href="#hipoteses">Hypotheses</a>
+          <a href="#mockup">Filter proposal</a>
+          <a href="#validacao">How I'd validate</a>
+          <a href="#conclusao">Conclusion</a>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="cfoot">
+  <div class="wrap cfoot__inner">
+    <p>Rafael Rocha, UX/UI Designer. Heuristic evaluation · July 2026.</p>
+    <nav aria-label="External links">
+      <a href="index.en.html">Portfolio</a>
+      <a href="https://www.linkedin.com/in/rafaelbttrocha/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:rafael.dg.bottaro@gmail.com">Email</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var root=document.documentElement, btn=document.getElementById('themeBtn'), icon=document.getElementById('themeIcon');
+  var stored=null; try{stored=localStorage.getItem('rr-theme');}catch(e){}
+  function paint(t){root.setAttribute('data-theme',t);icon.className=t==='dark'?'ph ph-sun':'ph ph-moon';
+    btn.setAttribute('aria-label',t==='dark'?'Switch to light theme':'Switch to dark theme');}
+  paint(root.getAttribute('data-theme')||'dark');
+  btn.addEventListener('click',function(){var n=root.getAttribute('data-theme')==='dark'?'light':'dark';stored=n;
+    try{localStorage.setItem('rr-theme',n);}catch(e){}paint(n);});
+
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)'), els=document.querySelectorAll('.reveal');
+  if(reduce.matches||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-in');});}
+  else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('is-in');io.unobserve(x.target);}});},{rootMargin:'0px 0px -10% 0px',threshold:.1});
+    els.forEach(function(e){io.observe(e);});}
+
+  // Table of contents scroll-spy: highlight the section being read.
+  var toc=document.querySelector('.toc');
+  if(toc&&'IntersectionObserver' in window){
+    var map={}; toc.querySelectorAll('a').forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+    var spy=new IntersectionObserver(function(en){en.forEach(function(e){var a=map[e.target.id];if(!a)return;
+      if(e.isIntersecting){toc.querySelectorAll('a').forEach(function(x){x.removeAttribute('aria-current');});a.setAttribute('aria-current','true');}});},
+      {rootMargin:'-20% 0px -70% 0px'});
+    Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el);});
+  }
+})();
+</script>
+</body>
+</html>

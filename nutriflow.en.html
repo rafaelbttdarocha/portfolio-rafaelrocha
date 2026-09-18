@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NutriFlow · UX case study · Rafael Rocha</title>
+<meta name="description" content="End-to-end UX/UI case study: an app that turns the nutritionist's meal plan into ready meals at the door. Research with 83 respondents, 5 interviews, and a usability test.">
+<meta name="author" content="Rafael Rocha">
+<meta name="theme-color" content="#0B0B0C" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FBFAF9" media="(prefers-color-scheme: light)">
+<link rel="canonical" href="https://rafaelbttrocha.com/nutriflow.en.html">
+<link rel="alternate" hreflang="pt-BR" href="https://rafaelbttrocha.com/nutriflow.html">
+<link rel="alternate" hreflang="en" href="https://rafaelbttrocha.com/nutriflow.en.html">
+<link rel="alternate" hreflang="x-default" href="https://rafaelbttrocha.com/nutriflow.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="NutriFlow · UX case study · Rafael Rocha">
+<meta property="og:description" content="Healthy eating always within reach: from problem to delivery, an app that brings the nutritionist's plan into real daily life.">
+<meta property="og:locale" content="en_US">
+
+<script>(function(){try{var t=localStorage.getItem('rr-theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(matchMedia('(prefers-color-scheme: light)').matches)document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/case.css">
+</head>
+
+<body>
+<a class="skip" href="#conteudo">Skip to content</a>
+
+<header class="cnav">
+  <div class="wrap cnav__inner">
+    <a class="cnav__back" href="index.en.html#projetos"><i class="ph ph-arrow-left" aria-hidden="true"></i> Portfolio</a>
+    <div class="cnav__tools">
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <a href="nutriflow.html" hreflang="pt-BR" lang="pt-BR">PT</a>
+        <a href="nutriflow.en.html" hreflang="en" lang="en" aria-current="true">EN</a>
+      </div>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle light and dark theme">
+        <i class="ph ph-sun" id="themeIcon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- HERO -->
+  <section class="chero wrap">
+    <p class="eyebrow">UX/UI case study · end to end · 2026</p>
+    <h1>NutriFlow, healthy eating always within reach</h1>
+    <p class="chero__lead">Turning the nutritionist's meal plan into ready meals at your door, as easy as ordering delivery.</p>
+
+    <dl class="chero__meta">
+      <div><dt>Role</dt><dd>UX/UI Designer (end-to-end)</dd></div>
+      <div><dt>Duration</dt><dd>7 months (study project)</dd></div>
+      <div><dt>Program</dt><dd>UX Unicórnio</dd></div>
+      <div><dt>Tools</dt><dd>Figma, Google Forms, Miro, Google Meet</dd></div>
+    </dl>
+
+    <figure class="cover">
+      <img src="assets/nutriflow-cover.jpg" alt="Three NutriFlow app screens: uploading the meal plan, the home screen with the current meal, and a progress screen" width="1600" height="901">
+    </figure>
+  </section>
+
+  <div class="cbody wrap">
+    <div class="clayout">
+      <div class="carticle">
+
+    <!-- PROBLEMA / SOLUÇÃO -->
+    <section id="problema" class="section reveal">
+      <h2>The problem and the solution</h2>
+      <div class="prose">
+        <p><strong>Problem.</strong> People need to follow a diet prescribed by a nutritionist, but they struggle to prepare or order those meals, because they're personalized and made by hand.</p>
+        <p><strong>Solution.</strong> NutriFlow is an app that turns the nutritionist's meal plan into a practical routine: the AI reads the uploaded plan (photo or PDF), organizes the meals automatically, and delivers them ready at home, helping the user stick to the prescribed diet.</p>
+      </div>
+    </section>
+
+    <!-- DESAFIO -->
+    <section id="desafio" class="section reveal">
+      <h2>How do you make following a diet as simple as ordering on iFood?</h2>
+      <div class="prose">
+        <p>That's the problem NutriFlow sets out to solve: the gap between what the nutritionist recommends and what a person actually eats day to day. I compared it to iFood on purpose, the convenience benchmark everyone already has in mind, and it makes the gap obvious: ordering junk is easy, sticking to the diet is the hard part.</p>
+        <p>The healthy-food market in Brazil is huge and still growing. According to the Ministry of Health (2024), more than <strong>60% of Brazilians</strong> are overweight, and the healthy-eating market moves over <strong>R$ 40 billion</strong> a year in the country.</p>
+        <p>A qualitative USP study of patients who dropped out of nutritional treatment (Santiago et al., 2023, RASBRAN) found difficulty accessing food to be one of the five main categories of reasons for dropping out, alongside how strict the diet is and how hard it is to fit the plan into daily life.</p>
+      </div>
+      <div class="cfig-2">
+        <figure class="cfig"><img src="assets/proj/nf-desafio1.png" alt="Chart on the healthy-food market in Brazil" width="737" height="289" loading="lazy"></figure>
+        <figure class="cfig"><img src="assets/proj/nf-desafio2.png" alt="Data on overweight rates and nutritional-treatment dropout" width="807" height="399" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <!-- BENCHMARKING + CSD -->
+    <section id="benchmarking" class="section reveal">
+      <h2>Benchmarking and the CSD matrix</h2>
+      <div class="prose">
+        <p>I analyzed the food-delivery, meal-kit, and nutrition-software markets, looking for where those services fall short and where there was room for something new: a solution truly focused on meals personalized and adapted to medical prescriptions.</p>
+      </div>
+      <div class="note"><strong>Gap found:</strong> no player in Brazil connects a nutritionist's prescribed meal plan to personalized preparation and meal delivery.</div>
+      <div class="prose">
+        <p>Before going into the field, I used a <strong>CSD matrix</strong> (Certainties, Suppositions, Doubts) as a filter. Instead of asking everything, it showed me where I was too confident without proof. The Suppositions became the research script, and the costliest Doubts (pricing and chef buy-in) were the first ones I went after.</p>
+      </div>
+      <figure class="cfig"><img src="assets/proj/nf-benchmarking.png" alt="Benchmarking of delivery, meal kits, and nutrition software" width="1000" height="504" loading="lazy"><figcaption>Market benchmarking.</figcaption></figure>
+      <figure class="cfig"><img src="assets/proj/nf-csd.png" alt="CSD matrix with certainties, suppositions, and doubts" width="1000" height="701" loading="lazy"><figcaption>CSD matrix, the first validation step.</figcaption></figure>
+    </section>
+
+    <!-- PESQUISA -->
+    <section id="pesquisa" class="section reveal">
+      <h2>83 respondents and 5 in-depth interviews</h2>
+      <div class="prose">
+        <p>Quantitative research (83 respondents via Google Forms) combined with qualitative (5 remote interviews with end users, 20 to 30 min each, over Google Meet).</p>
+      </div>
+
+      <div class="stats">
+        <div><b>74%</b><span>drop the diet for lack of time to prepare</span></div>
+        <div><b>78%</b><span>of those who dieted quit within 3 months</span></div>
+        <div><b>49%</b><span>prefer ready-to-heat meals</span></div>
+        <div><b>46%</b><span>prefer deliveries 2 to 3x a week</span></div>
+        <div><b>82%</b><span>want to track macronutrients</span></div>
+        <div><b>R$350-420</b><span>viable average monthly spend</span></div>
+      </div>
+
+      <h3>What came up in the interviews</h3>
+      <blockquote class="quote">
+        <p>“I've had the diet printed on my fridge for 3 months. I followed it for 2 weeks. The problem is that day to day it's impossible: you leave work at 8pm, you have a kid waiting, who's going to cook?”</p>
+        <cite>Ana, 33, marketing manager</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>“If there were an app that took my plan and turned it into meal boxes, I'd easily pay R$ 300 a month.”</p>
+        <cite>Thiago, 36, data analyst</cite>
+      </blockquote>
+      <div class="prose">
+        <p><strong>Interview takeaway:</strong> people don't quit the diet for lack of willpower. They quit because, in the daily rush, they have no way to execute the plan. 4 of the 5 interviewees named iFood as their convenience benchmark.</p>
+      </div>
+      <figure class="cfig"><img src="assets/proj/nf-pesquisa.png" alt="Infographic with the full quantitative and qualitative research results" width="1000" height="2834" loading="lazy"><figcaption>Research results.</figcaption></figure>
+    </section>
+
+    <!-- PERSONA / JORNADA -->
+    <section id="persona" class="section reveal">
+      <h2>Persona and user journey</h2>
+      <div class="prose">
+        <p>With the persona in hand, I mapped what Ana's first week in the app would look like, phase by phase, to find where the experience lifts and where it falls apart. More than listing screens, I wanted to find the most fragile moment, the one that decides whether a person stays or gives up.</p>
+        <p>The emotion curve pointed to that moment: right at the start, when the app has to read her plan. If the AI misreads it up front, the person loses trust and rarely comes back. That's what made me treat <strong>reading the plan as the most critical part of the product</strong>, not an onboarding detail.</p>
+      </div>
+      <figure class="cfig"><img src="assets/proj/nf-persona.png" alt="Persona of Ana, a 33-year-old marketing manager" width="1000" height="527" loading="lazy"><figcaption>Persona.</figcaption></figure>
+      <figure class="cfig"><img src="assets/proj/nf-jornada1.png" alt="User journey through the first week in the app, part 1" width="1000" height="1255" loading="lazy"></figure>
+      <figure class="cfig"><img src="assets/proj/nf-jornada2.png" alt="User journey with the emotion curve highlighting the critical moment" width="1000" height="1209" loading="lazy"><figcaption>User journey and emotion curve.</figcaption></figure>
+    </section>
+
+    <!-- PROPOSTA DE VALOR -->
+    <section id="proposta" class="section reveal">
+      <h2>An ecosystem of 3 apps, an MVP focused on the Customer</h2>
+      <ul class="blist">
+        <li><strong>Customer</strong> · sends the nutritionist's meal plan and receives the ready meals.</li>
+        <li><strong>Personal Chef</strong> · receives orders, buys ingredients, and prepares the meals.</li>
+        <li><strong>Courier</strong> · handles deliveries according to the plan.</li>
+      </ul>
+      <div class="prose">
+        <p>I started with the Customer for a simple reason: they're the one who feels the pain and pays the bill. Without validated demand on that side, it wouldn't make sense to touch the chef's or the courier's app. So this study covers only the Customer app, from uploading the plan to the order arriving at the door.</p>
+      </div>
+      <figure class="cfig"><img src="assets/proj/nf-proposta.png" alt="Ecosystem of 3 integrated apps: Customer, Personal Chef, and Courier" width="1000" height="561" loading="lazy"><figcaption>The 3-app ecosystem.</figcaption></figure>
+    </section>
+
+    <!-- IDEAÇÃO + LOW-FI -->
+    <section id="ideacao" class="section reveal">
+      <h2>Workshops, HMW, and wireframes</h2>
+      <div class="note"><strong>Core HMW:</strong> how might we make following a prescribed meal plan as easy as ordering food for delivery?</div>
+      <div class="prose">
+        <p>After prioritizing ideas on an impact-vs-feasibility matrix, I prototyped the 4 main flows in low fidelity: onboarding and upload, AI processing, Home (My Plan), and placing an order.</p>
+      </div>
+      <figure class="cfig"><img src="assets/proj/nf-priorizacao.png" alt="Prioritization matrix by impact and feasibility" width="1000" height="833" loading="lazy"><figcaption>Prioritization: impact vs feasibility.</figcaption></figure>
+      <figure class="cfig"><img src="assets/proj/nf-wireframes.png" alt="Low-fidelity wireframes of the four main flows" width="1000" height="1003" loading="lazy"><figcaption>Low-fidelity wireframes.</figcaption></figure>
+    </section>
+
+    <!-- DESIGN SYSTEM -->
+    <section id="design-system" class="section reveal">
+      <h2>Design System</h2>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch__chip" style="background:#2D9A5F"></div><div class="swatch__meta"><b>Primary</b><code>#2D9A5F</code><span>Leaf green: CTAs, links, and active states</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:#1A6B40"></div><div class="swatch__meta"><b>Primary Dark</b><code>#1A6B40</code><span>Hover, pressed</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:#F5A623"></div><div class="swatch__meta"><b>Accent</b><code>#F5A623</code><span>Orange: notifications and urgency</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:#1A1A2E"></div><div class="swatch__meta"><b>Neutral</b><code>#1A1A2E</code><span>Primary text</span></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:#FAFAFA;border-bottom:1px solid var(--line)"></div><div class="swatch__meta"><b>Background</b><code>#FAFAFA</code><span>General background</span></div></div>
+      </div>
+      <div class="prose">
+        <p>Green is the base color because the app is about food and health, and green already carries that idea without explaining. I kept orange only for what needs attention right now (the current meal, an alert), so it doesn't compete with green day to day.</p>
+        <p><strong>Typography:</strong> Inter, the native font on iOS 17+ and Android 14+. Since people already see it every day, reading feels more familiar (Jakob's Law).</p>
+        <p><strong>Accessibility:</strong> minimum 4.5:1 contrast (WCAG AA), 44×44pt minimum touch targets, Dynamic Type, and labels on every icon.</p>
+      </div>
+      <figure class="cfig"><img src="assets/proj/nf-prototipo.png" alt="NutriFlow design system in Figma: palette, typography, and components" width="1000" height="1643" loading="lazy"><figcaption>Design system in Figma: palette, typography, and components.</figcaption></figure>
+    </section>
+
+    <!-- HI-FI -->
+    <section id="prototipo" class="section reveal">
+      <h2>Three decisions guided the screens</h2>
+      <div class="prose">
+        <p><strong>1. The AI reads the plan; the person types nothing.</strong> Research showed that logging food by hand is exactly what wears people out and makes them quit apps like MyFitnessPal. If the goal is to take effort out of the way, asking someone to log every meal, every day, would just repeat the problem. So they photograph the plan and the AI builds the calendar.</p>
+        <p><strong>2. Ordering fits in three steps:</strong> period, delivery, and payment. Early versions had more steps, and every extra screen was a chance to give up. The closer it feels to ordering food, the lower the friction.</p>
+        <p><strong>3. The Home answers a single question:</strong> “what do I eat now?”. The current meal is front and center and everything else is secondary. Fewer decisions on screen, less room to break the diet.</p>
+      </div>
+      <div class="proto-cta">
+        <div class="proto-cta__text">
+          <p class="proto-cta__label">Interactive prototype</p>
+          <b>Explore the app from the inside</b>
+          <span>From uploading the plan to the order arriving at the door, in the high-fidelity flow.</span>
+        </div>
+        <a class="btn btn--primary" href="https://deploy-vercel-fawn-nu.vercel.app/" target="_blank" rel="noopener"><i class="ph ph-play-circle" aria-hidden="true"></i> Open prototype</a>
+      </div>
+    </section>
+
+    <!-- TESTE DE USABILIDADE -->
+    <section id="teste" class="section reveal">
+      <h2>Usability test</h2>
+      <div class="prose">
+        <p>Moderated remote test with 5 participants (25 to 45 years old, delivery users), with a Figma prototype shared via link + Google Meet, 20 to 30 min per participant.</p>
+      </div>
+      <div class="table-scroll">
+        <table class="spec">
+          <thead><tr><th>Task</th><th>Success rate</th><th>Average time</th><th>Errors</th></tr></thead>
+          <tbody>
+            <tr><td>Upload the meal plan</td><td>80% (4/5)</td><td>1m 42s</td><td>1 couldn't find the PDF</td></tr>
+            <tr><td>Place an order</td><td class="ok">100% (5/5)</td><td>58s</td><td>None</td></tr>
+            <tr><td>Check delivery details</td><td>60% (3/5)</td><td>2m 10s</td><td>2 wrong tab</td></tr>
+            <tr><td>Rate the delivered meal</td><td class="ok">100% (5/5)</td><td>34s</td><td>None</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Critical issues and fixes</h3>
+      <ul class="blist">
+        <li><strong>The upload button was easy to miss.</strong> One participant couldn't find where to upload the plan. I trimmed upload to two options with equal visual weight: take a photo or pick from the gallery.</li>
+        <li><strong>Tracking was hidden in a tab.</strong> Two people looked for delivery status in the wrong place. I moved a tracking card to the Home, where they looked first.</li>
+      </ul>
+    </section>
+
+    <!-- MÉTRICAS -->
+    <section id="metricas" class="section reveal">
+      <h2>How I'd measure success</h2>
+      <div class="prose">
+        <p>I used the <strong>HEART</strong> framework to avoid vanity metrics. Downloads and order counts matter, but what really counts is adherence: is the person still following the diet after a month? That's the number that tells you whether the product solves the problem or just looks nice.</p>
+      </div>
+      <figure class="cfig"><img src="assets/proj/nf-metricas.png" alt="Success metrics mapped with the HEART framework" width="1000" height="2254" loading="lazy"><figcaption>Metrics via the HEART framework.</figcaption></figure>
+    </section>
+
+    <!-- CONCLUSÃO -->
+    <section id="conclusao" class="section reveal">
+      <h2>What I took away</h2>
+      <div class="prose">
+        <p class="lead-p">NutriFlow doesn't replace the nutritionist. It just makes it possible to follow what the nutritionist has already prescribed.</p>
+        <p>The project grew out of a real problem that affects millions of Brazilians: the gap between the meal plan and daily execution. The research made it clear that what stops people isn't motivation, but the lack of time and convenience: 78% quit the diet within 3 months, and 74% point to lack of time as the main reason.</p>
+        <p>Remote tests with 5 participants showed the direction made sense: the ordering flow hit <strong>100% success, in 58 seconds</strong>. The <strong>SUS of 78/100</strong> points to good usability, with room to improve.</p>
+      </div>
+      <div class="note">In fairness: this is a study project, with a small sample and no real operation behind it. I treat these numbers as a signal, not proof. The real next step would be a small pilot, with actual chefs delivering to a decent number of customers, to see whether the operation holds up outside the prototype.</div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cend reveal">
+      <h2>Try NutriFlow from the inside</h2>
+      <p>Open the high-fidelity interactive prototype, or see the full case study on Notion.</p>
+      <div class="cend__actions">
+        <a class="btn btn--primary" href="https://deploy-vercel-fawn-nu.vercel.app/" target="_blank" rel="noopener"><i class="ph ph-play-circle" aria-hidden="true"></i> Open prototype</a>
+        <a class="btn btn--ghost" href="https://portfolio-rafaelrochauxuidesigner.notion.site/NutriFlow-dieta-saud-vel-sempre-disposi-o-35a2d75911ba80fd8af8ffb82fc17b4b" target="_blank" rel="noopener"><i class="ph ph-arrow-up-right" aria-hidden="true"></i> Full case study on Notion</a>
+        <a class="btn btn--ghost" href="index.en.html#projetos"><i class="ph ph-arrow-left" aria-hidden="true"></i> Back to work</a>
+      </div>
+    </section>
+
+      </div>
+      <aside class="toc" aria-label="Page contents">
+        <nav class="toc__inner">
+          <p class="toc__title">On this page</p>
+          <a href="#problema">Problem and solution</a>
+          <a href="#desafio">The challenge</a>
+          <a href="#benchmarking">Benchmarking and CSD</a>
+          <a href="#pesquisa">Research</a>
+          <a href="#persona">Persona and journey</a>
+          <a href="#proposta">Value proposition</a>
+          <a href="#ideacao">Ideation</a>
+          <a href="#design-system">Design System</a>
+          <a href="#prototipo">Hi-fi prototype</a>
+          <a href="#teste">Usability test</a>
+          <a href="#metricas">Metrics</a>
+          <a href="#conclusao">Takeaways</a>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="cfoot">
+  <div class="wrap cfoot__inner">
+    <p>Rafael Rocha, UX/UI Designer. NutriFlow · UX Unicórnio · 2026.</p>
+    <nav aria-label="External links">
+      <a href="index.en.html">Portfolio</a>
+      <a href="https://www.linkedin.com/in/rafaelbttrocha/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:rafael.dg.bottaro@gmail.com">Email</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var root=document.documentElement, btn=document.getElementById('themeBtn'), icon=document.getElementById('themeIcon');
+  var stored=null; try{stored=localStorage.getItem('rr-theme');}catch(e){}
+  function paint(t){root.setAttribute('data-theme',t);icon.className=t==='dark'?'ph ph-sun':'ph ph-moon';
+    btn.setAttribute('aria-label',t==='dark'?'Switch to light theme':'Switch to dark theme');}
+  paint(root.getAttribute('data-theme')||'dark');
+  btn.addEventListener('click',function(){var n=root.getAttribute('data-theme')==='dark'?'light':'dark';stored=n;
+    try{localStorage.setItem('rr-theme',n);}catch(e){}paint(n);});
+
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)'), els=document.querySelectorAll('.reveal');
+  if(reduce.matches||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-in');});}
+  else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('is-in');io.unobserve(x.target);}});},{rootMargin:'0px 0px -10% 0px',threshold:.1});
+    els.forEach(function(e){io.observe(e);});}
+
+  // Table of contents scroll-spy: highlight the section being read.
+  var toc=document.querySelector('.toc');
+  if(toc&&'IntersectionObserver' in window){
+    var map={}; toc.querySelectorAll('a').forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+    var spy=new IntersectionObserver(function(en){en.forEach(function(e){var a=map[e.target.id];if(!a)return;
+      if(e.isIntersecting){toc.querySelectorAll('a').forEach(function(x){x.removeAttribute('aria-current');});a.setAttribute('aria-current','true');}});},
+      {rootMargin:'-20% 0px -70% 0px'});
+    Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el);});
+  }
+})();
+</script>
+</body>
+</html>
