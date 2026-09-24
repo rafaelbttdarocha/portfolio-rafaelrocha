@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ewally Backoffice · Estudo de caso · Rafael Rocha</title>
+<meta name="description" content="Redesenho do portal interno de uma fintech: da pesquisa com operações, compliance, jurídico e financeiro à entrega em alta fidelidade no Design System Blu. Projeto conduzido e entregue por Rafael Rocha.">
+<meta name="author" content="Rafael Rocha">
+<meta name="theme-color" content="#0B0B0C" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FBFAF9" media="(prefers-color-scheme: light)">
+<link rel="canonical" href="https://rafaelbttrocha.com/backoffice.html">
+<link rel="alternate" hreflang="pt-BR" href="https://rafaelbttrocha.com/backoffice.html">
+<link rel="alternate" hreflang="en" href="https://rafaelbttrocha.com/backoffice.en.html">
+<link rel="alternate" hreflang="x-default" href="https://rafaelbttrocha.com/backoffice.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ewally Backoffice · Estudo de caso · Rafael Rocha">
+<meta property="og:description" content="De um portal interno defasado e engessado a uma ferramenta de trabalho moderna: pesquisa, priorização e entrega no Design System Blu.">
+<meta property="og:locale" content="pt_BR">
+
+<script>(function(){try{var t=localStorage.getItem('rr-theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(matchMedia('(prefers-color-scheme: light)').matches)document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/case.css">
+</head>
+
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="cnav">
+  <div class="wrap cnav__inner">
+    <a class="cnav__back" href="index.html#projetos"><i class="ph ph-arrow-left" aria-hidden="true"></i> Portfólio</a>
+    <div class="cnav__tools">
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <a href="backoffice.html" hreflang="pt-BR" lang="pt-BR" aria-current="true">PT</a>
+        <a href="backoffice.en.html" hreflang="en" lang="en">EN</a>
+      </div>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Alternar tema claro e escuro">
+        <i class="ph ph-sun" id="themeIcon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- HERO -->
+  <section class="chero wrap">
+    <p class="eyebrow">Estudo de caso · Product Design · Ferramenta interna B2B</p>
+    <h1>Ewally Backoffice, o redesenho do portal interno</h1>
+    <p class="chero__lead">Transformar um portal administrativo defasado e "engessado" na ferramenta de trabalho diária de quem faz uma fintech funcionar: operações, compliance, jurídico e financeiro.</p>
+
+    <dl class="chero__meta">
+      <div><dt>Papel</dt><dd>UX/UI Designer, da pesquisa à entrega</dd></div>
+      <div><dt>Contexto</dt><dd>Ewally (fintech), ferramenta interna</dd></div>
+      <div><dt>Áreas atendidas</dt><dd>Operações, Compliance, Jurídico, Financeiro</dd></div>
+      <div><dt>Status</dt><dd>Em desenvolvimento</dd></div>
+      <div><dt>Ferramentas</dt><dd>Figma, Design System Blu, entrevistas</dd></div>
+    </dl>
+
+    <figure class="cover">
+      <img src="assets/backoffice-cover.png" alt="Home do novo Ewally Backoffice: busca global, notificações e cards de acesso rápido para Gerenciamento de usuários, Dashboard, Consultas, Regulatórios, Histórico e Aprovações" width="1440" height="1198">
+    </figure>
+  </section>
+
+  <div class="cbody wrap">
+    <div class="clayout">
+      <div class="carticle">
+
+    <!-- CONTEXTO -->
+    <section id="contexto" class="section reveal">
+      <h2>O contexto</h2>
+      <div class="prose">
+        <p>O Backoffice é o portal usado pelos colaboradores da Ewally nas áreas de <strong>operações, compliance, jurídico e financeiro</strong>. É por ele que a empresa gerencia contas, saldos, extratos, aprovações e obrigações regulatórias, ou seja, a operação interna que sustenta o produto que o cliente vê.</p>
+        <p>O problema: o portal já estava muito defasado e sem recursos básicos para apoiar quem o usa todos os dias. Buscar informação dava trabalho, os extratos travavam e o layout era descrito pelos próprios operadores como "engessado" e "arcaico". Cada tarefa simples custava cliques e abas a mais.</p>
+      </div>
+      <div class="note"><strong>O desafio.</strong> Redesenhar o portal do zero, o "Ewally Backoffice", mais eficiente, funcional e seguro, partindo do que os operadores realmente fazem no dia a dia e não de suposições.</div>
+    </section>
+
+    <!-- PESQUISA -->
+    <section id="pesquisa" class="section reveal">
+      <h2>Descoberta: 6 entrevistas, 4 áreas</h2>
+      <div class="prose">
+        <p>O objetivo era claro: ouvir quem usa o portal para identificar problemas, necessidades e riscos de segurança, e usar isso como base do novo Backoffice. Analisei as transcrições de <strong>6 entrevistas</strong> com pessoas das equipes de Jurídico, Compliance, Operações e Financeiro. Os percentuais abaixo são sobre o total de entrevistas que citaram cada ponto.</p>
+      </div>
+
+      <h3>Como o portal é usado</h3>
+      <div class="stats">
+        <div><b>100%</b><span>busca de clientes: saldos, fluxo de caixa, ajustes, créditos e encerramento de contas</span></div>
+        <div><b>83%</b><span>acesso a extratos e histórico de transações da conta digital</span></div>
+        <div><b>33%</b><span>quebra de sigilo para investigações e informações protegidas</span></div>
+      </div>
+      <div class="prose">
+        <p>Além desses usos centrais, apareceu uma cauda longa de tarefas especializadas por área: depósitos judiciais, integração com o STA (envio de CADOCs ao Banco Central), notificações, visualização de infrações, ajuste de saldos, processamento de tickets e receitas de cartão, o novo módulo SVR (devolução de saldos) e pagamentos. Cada área usa o portal de um jeito, e o mesmo layout tentava servir a todas.</p>
+      </div>
+    </section>
+
+    <!-- DORES -->
+    <section id="dores" class="section reveal">
+      <h2>As dores de usabilidade</h2>
+      <div class="prose">
+        <p>As frustrações se repetiram entre as áreas e se agruparam em sete temas:</p>
+      </div>
+      <ul class="blist">
+        <li><strong>Busca ineficiente (50%).</strong> Falta de filtros robustos na busca de clientes e extratos, e a busca não mostra dados completos (nome, chave Pix), o que obriga a navegar por várias telas para achar uma informação.</li>
+        <li><strong>Lentidão e travamentos (50%).</strong> Extratos de clientes com muitas transações demoram a carregar, e o sistema trava ao lidar com grandes volumes de dados.</li>
+        <li><strong>Extratos problemáticos (33%).</strong> Erros ao trocar datas e na exibição, além de uma extração pouco clara e com informações de subsídio desnecessárias.</li>
+        <li><strong>Interface arcaica.</strong> Layout pouco informativo, "engessado" e "arcaico", com campos redundantes e falta de clareza que dificultam a navegação.</li>
+        <li><strong>Fluxo ineficiente.</strong> Necessidade de abrir várias abas para consultar informações diferentes e ausência de histórico de casos por cliente, o que atrapalha o acompanhamento.</li>
+        <li><strong>Problemas de acesso.</strong> Bloqueios de IP, problemas de senha e múltiplas contas para o mesmo usuário.</li>
+        <li><strong>Funcionalidades essenciais faltando.</strong> Sem exportar extrato em PDF com cabeçalho e logo da empresa, e sem um campo para copiar usuário e conta.</li>
+      </ul>
+      <blockquote class="quote">
+        <p>“Alguns o consideram tranquilo e eficiente para o dia a dia; outros o veem como desatualizado, pouco funcional, engessado e arcaico.”</p>
+        <cite>Síntese do sentimento geral nas entrevistas</cite>
+      </blockquote>
+      <div class="note">O sentimento é misto, mas dois pontos são generalizados: a frustração com a busca de informações e com o carregamento lento, e uma preocupação forte com segurança e controle de acesso.</div>
+    </section>
+
+    <!-- PRIORIZAÇÃO -->
+    <section id="priorizacao" class="section reveal">
+      <h2>Da escuta às prioridades</h2>
+      <div class="prose">
+        <p>Com os achados na mão, cruzei <strong>frequência</strong> (quantas áreas sentiam a dor) com <strong>impacto</strong> no trabalho diário. O que era transversal e travava tarefas centrais foi para o topo; o que era específico de uma área virou módulo dedicado.</p>
+      </div>
+      <ul class="blist">
+        <li><strong>Busca que resolve.</strong> Filtros robustos (valor, tipo de transação, data) e resultados já com nome, chave Pix e dados de agência e conta, para acabar com o vai e volta entre telas.</li>
+        <li><strong>Extratos rápidos e claros.</strong> Carregamento que aguenta grande volume e exportação em PDF com cabeçalho e logo, para formalidade e segurança.</li>
+        <li><strong>Centralização.</strong> Reunir os dados do cliente em um só lugar, integrando o portal a outros sistemas e à plataforma de tickets.</li>
+        <li><strong>Segurança e rastreabilidade.</strong> Segregação de acesso por área, 2FA configurável e campo de justificativa obrigatório para auditoria.</li>
+        <li><strong>Atritos pequenos, ganho diário.</strong> Campo para copiar usuário e conta, tempo de expiração de sessão configurável e processamento simultâneo de quebras de sigilo.</li>
+      </ul>
+      <div class="prose">
+        <p>Os protótipos foram feitos direto em <strong>alta fidelidade</strong>, usando o novo Design System da Ewally, o <strong>Blu</strong>, o que deixou as telas prontas para desenvolvimento e consistentes desde o primeiro rascunho.</p>
+      </div>
+    </section>
+
+    <!-- SOLUÇÃO -->
+    <section id="solucao" class="section reveal">
+      <h2>Antes e depois</h2>
+      <div class="prose">
+        <p><strong>Login.</strong> O antigo era um formulário solto, sem recuperar senha nem mostrar o que foi digitado. O novo entra na identidade do Backoffice (Blu): mostrar e ocultar senha, "esqueci a minha senha" e um visual limpo e confiável, coerente com uma ferramenta que lida com dados sensíveis.</p>
+      </div>
+      <figure class="cfig"><img src="assets/proj/bo-login-antes.png" alt="Tela de login antiga do portal, com logo amarelo da Ewally e campos simples" width="1600" height="729" loading="lazy"><figcaption>Antes: login antigo, sem recuperar senha e sem mostrar a senha.</figcaption></figure>
+      <figure class="cfig"><img src="assets/proj/bo-login-depois.jpg" alt="Nova tela de login do Ewally Backoffice, com opção de mostrar a senha e recuperar a senha" width="1600" height="960" loading="lazy"><figcaption>Depois: login do Ewally Backoffice no Design System Blu.</figcaption></figure>
+      <div class="prose">
+        <p><strong>Home.</strong> A antiga jogava o operador direto num formulário de "Buscar cliente", com um menu lateral longo e cheio de itens desiguais (Marketplace, Câmbio, Listas Restritivas, STA, Agente...). A nova abre com uma saudação, busca global no topo, notificações e cards de acesso rápido para as tarefas mais frequentes, sobre um menu enxuto e organizado por função.</p>
+      </div>
+      <figure class="cfig"><img src="assets/proj/bo-home-antes.png" alt="Home antiga do portal, que abria direto no formulário de buscar cliente, com menu lateral longo" width="1600" height="730" loading="lazy"><figcaption>Antes: a home era um formulário de busca, com menu longo e confuso.</figcaption></figure>
+      <figure class="cfig"><img src="assets/proj/bo-home-depois.png" alt="Nova home do Ewally Backoffice com saudação, busca global, notificações e seis cards de acesso rápido" width="1440" height="1198" loading="lazy"><figcaption>Depois: home com saudação, busca global e acesso rápido às tarefas.</figcaption></figure>
+
+      <h3>Módulos novos, que o portal antigo não tinha</h3>
+      <div class="prose">
+        <p>Parte do trabalho foi criar do zero recursos que simplesmente não existiam e que a pesquisa mostrou serem necessários:</p>
+      </div>
+      <ul class="blist">
+        <li><strong>Dashboard.</strong> Uma visão geral logo na entrada, no lugar de cair direto num formulário.</li>
+        <li><strong>Notificações.</strong> Central para acompanhar avisos de usuários e Pix, antes espalhados ou inexistentes.</li>
+        <li><strong>SVR.</strong> Módulo dedicado para devolução de saldos, uma tarefa que não tinha lugar próprio.</li>
+        <li><strong>Gestão e controle de usuários.</strong> Administração de acessos com segregação por área, base da agenda de segurança.</li>
+      </ul>
+    </section>
+
+    <!-- SEGURANÇA -->
+    <section id="seguranca" class="section reveal">
+      <h2>Segurança e controle de acesso</h2>
+      <div class="prose">
+        <p>Num portal que dá acesso a dados financeiros e protegidos, segurança não é um detalhe, é requisito. As entrevistas trouxeram preocupações concretas, que viraram decisões de design:</p>
+      </div>
+      <ul class="blist">
+        <li><strong>Segregação de acesso.</strong> Módulos específicos por área, para que cada pessoa veja só o que precisa.</li>
+        <li><strong>Fim dos campos de texto livre.</strong> Reduzir entrada solta que abre brecha para erro e vazamento.</li>
+        <li><strong>Liberação de IP revista.</strong> A liberação por Slack era considerada insegura e precisava de um fluxo próprio e auditável.</li>
+        <li><strong>Dados sensíveis sob controle.</strong> Rever quem acessa o relatório de Compliance e quem pode exportar extratos.</li>
+        <li><strong>2FA configurável.</strong> Ajustar a frequência da autenticação de dois fatores ao contexto de uso.</li>
+        <li><strong>Justificativa obrigatória.</strong> Ações no sistema pedem um motivo, de preferência pré-definido, para facilitar auditoria e rastreabilidade.</li>
+      </ul>
+    </section>
+
+    <!-- STATUS -->
+    <section id="status" class="section reveal">
+      <h2>Status e próximos passos</h2>
+      <div class="prose">
+        <p class="lead-p">Este é um projeto <strong>em desenvolvimento</strong>. As telas e a estratégia já estão entregues; a implementação segue em andamento.</p>
+        <p>Como ainda não está em produção, não há métricas de resultado para mostrar, e prefiro ser honesto sobre isso a inventar número. O que posso afirmar é o trabalho de design em si: a <strong>pesquisa, a síntese, a priorização e os protótipos de alta fidelidade no Design System Blu foram conduzidos e entregues por mim</strong>, como UX/UI designer do projeto.</p>
+      </div>
+      <div class="note">Quando o portal entrar em produção, os sinais a acompanhar são claros: tempo para completar as tarefas centrais (busca e extratos), adoção dos novos módulos e queda nos travamentos e nos problemas de acesso relatados.</div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cend reveal">
+      <h2>Vamos conversar sobre esse projeto?</h2>
+      <p>Posso mostrar o processo completo e as telas em mais detalhe numa conversa.</p>
+      <div class="cend__actions">
+        <a class="btn btn--primary" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=rafael.dg.bottaro@gmail.com&amp;su=Ewally%20Backoffice%20%C2%B7%20portf%C3%B3lio" target="_blank" rel="noopener"><i class="ph ph-envelope-simple" aria-hidden="true"></i> Falar comigo</a>
+        <a class="btn btn--ghost" href="index.html#projetos"><i class="ph ph-arrow-left" aria-hidden="true"></i> Voltar aos projetos</a>
+      </div>
+    </section>
+
+      </div>
+      <aside class="toc" aria-label="Índice desta página">
+        <nav class="toc__inner">
+          <p class="toc__title">Nesta página</p>
+          <a href="#contexto">O contexto</a>
+          <a href="#pesquisa">Descoberta</a>
+          <a href="#dores">As dores</a>
+          <a href="#priorizacao">Priorização</a>
+          <a href="#solucao">Antes e depois</a>
+          <a href="#seguranca">Segurança e acesso</a>
+          <a href="#status">Status</a>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="cfoot">
+  <div class="wrap cfoot__inner">
+    <p>Rafael Rocha, UX/UI Designer. Ewally Backoffice · ferramenta interna.</p>
+    <nav aria-label="Links externos">
+      <a href="index.html">Portfólio</a>
+      <a href="https://www.linkedin.com/in/rafaelbttrocha/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=rafael.dg.bottaro@gmail.com" target="_blank" rel="noopener">Email</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var root=document.documentElement, btn=document.getElementById('themeBtn'), icon=document.getElementById('themeIcon');
+  var stored=null; try{stored=localStorage.getItem('rr-theme');}catch(e){}
+  function paint(t){root.setAttribute('data-theme',t);icon.className=t==='dark'?'ph ph-sun':'ph ph-moon';
+    btn.setAttribute('aria-label',t==='dark'?'Ativar tema claro':'Ativar tema escuro');}
+  paint(root.getAttribute('data-theme')||'dark');
+  btn.addEventListener('click',function(){var n=root.getAttribute('data-theme')==='dark'?'light':'dark';stored=n;
+    try{localStorage.setItem('rr-theme',n);}catch(e){}paint(n);});
+
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)'), els=document.querySelectorAll('.reveal');
+  if(reduce.matches||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-in');});}
+  else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('is-in');io.unobserve(x.target);}});},{rootMargin:'0px 0px -10% 0px',threshold:.1});
+    els.forEach(function(e){io.observe(e);});}
+
+  // Table of contents scroll-spy: highlight the section being read.
+  var toc=document.querySelector('.toc');
+  if(toc&&'IntersectionObserver' in window){
+    var map={}; toc.querySelectorAll('a').forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+    var spy=new IntersectionObserver(function(en){en.forEach(function(e){var a=map[e.target.id];if(!a)return;
+      if(e.isIntersecting){toc.querySelectorAll('a').forEach(function(x){x.removeAttribute('aria-current');});a.setAttribute('aria-current','true');}});},
+      {rootMargin:'-20% 0px -70% 0px'});
+    Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el);});
+  }
+})();
+</script>
+</body>
+</html>
